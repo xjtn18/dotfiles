@@ -1,3 +1,4 @@
+" The following config file is intended for gVim on Windows OS.
 " Vim with all enhancements
 "source $VIMRUNTIME/vimrc_example.vim
 
