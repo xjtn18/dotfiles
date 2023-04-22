@@ -15,19 +15,25 @@
 "
 call plug#begin()
 
-Plug 'nvim-lua/plenary.nvim'                             " Telescope (below) depends on it
-Plug 'nvim-telescope/telescope.nvim'                     " Fuzzy file/grep project search tool
-Plug 'maxmellon/vim-jsx-pretty'                          " JSX highlighting/indentation support
-Plug 'EdenEast/nightfox.nvim'                            " Colorschemes
+Plug 'nvim-lua/plenary.nvim'              " Telescope (below) depends on it
+Plug 'nvim-telescope/telescope.nvim'      " Fuzzy file/grep project search tool
 
+" JSX highlighting/indentation support
+Plug 'maxmellon/vim-jsx-pretty'
+
+" Context view + language highlighting support
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
+" Status line config
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 
+" Colorschemes
+Plug 'EdenEast/nightfox.nvim'                            
 Plug 'Mofiqul/vscode.nvim'
-Plug 'karb94/neoscroll.nvim'
+Plug 'neanias/everforest-nvim', { 'branch': 'main' }
+
 
 call plug#end()
 " You can revert the settings after the call like so:
@@ -36,10 +42,11 @@ call plug#end()
 
 
 
-colorscheme vscode
+colorscheme everforest
 
 
-set foldcolumn=1
+set foldcolumn=0
+
 
 " Makes it so yanking copies to the system clipboard (side effect: makes pasting slower)
 " Alternativaley, you can just use "+y to yank to system
@@ -111,6 +118,18 @@ nnoremap <leader>ka :bufdo bd<CR>
 " Open init.vim config file 
 nnoremap <leader>i :e ~/AppData/Local/nvim/init.vim<CR>
 
+" Open plugged folder (to quickly edit plugin files)
+nnoremap <leader>pe :e ~/AppData/Local/nvim-data/plugged<CR>
+
+
+" Set the cdpath so that I can easily cd into directories at this location
+set cdpath=~/dev/projects
+
+" Change into the (recent) project ive been working on (I need to update this
+" manually here)
+nnoremap <leader>ap :cd cvo_website<CR>
+
+
 " Center view on cursor after Shift-H/L
 nnoremap <S-h> Hzz
 nnoremap <S-l> Lzz
@@ -143,8 +162,8 @@ if exists("g:neovide")
 
   cd C:\Users\jacob.nardone\dev
 
-  set guifont=Cousine\ NFM:h14
-
+  set guifont=Cousine\ NFM:h13
+  
   let g:neovide_cursor_vfx_mode = "pixiedust"
 
   let g:neovide_cursor_vfx_particle_density = 14.0
@@ -159,6 +178,7 @@ if exists("g:neovide")
 
   let g:neovide_fullscreen = v:true
 
+
 endif
 
 
@@ -169,6 +189,9 @@ lua << END
 require('nvim-treesitter.configs').setup {
   ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'cpp', 'rust'},
   highlight = {
+    enable = true,
+  },
+  indent = {
     enable = true,
   },
 }
@@ -208,7 +231,7 @@ require('telescope').setup{
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'Tomorrow',
+    theme = 'powerline',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -246,11 +269,6 @@ require('lualine').setup {
   extensions = {}
 }
 
-
--- Smooth scroll
--- require('neoscroll').setup {
-  -- easing_function = "circular"
---}
 
 END
 
