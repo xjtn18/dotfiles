@@ -126,7 +126,8 @@ nnoremap <leader>pe :e ~/AppData/Local/nvim-data/plugged<cr>
 
 
 " Set the cdpath so that I can easily cd into directories at this location
-set cdpath+=~/dev/intellimind;~/dev/projects;
+set cdpath+=~/dev/projects
+set cdpath+=~/dev/intellimind
 
 " Change into the (recent) project ive been working on (I need to update this
 " manually here)
@@ -261,7 +262,7 @@ if exists("g:neovide")
    " Put anything you want to happen only in Neovide here
   cd ~/dev
 
-  set guifont=Cousine\ NFM:h17
+  set guifont=Cousine\ NFM:h14
   
   let g:neovide_cursor_vfx_mode = "pixiedust"
 
@@ -272,8 +273,8 @@ if exists("g:neovide")
 
   let g:neovide_hide_mouse_when_typing = v:true
 
-  let g:neovide_refresh_rate = 120
-  let g:neovide_refresh_rate_idle = 60
+  let g:neovide_refresh_rate = 60
+  let g:neovide_refresh_rate_idle = 5
 
   let g:neovide_fullscreen = v:true
 endif
@@ -474,7 +475,7 @@ require('lualine').setup {
     lualine_a = { 'mode' },
     lualine_b = {
       'branch',
-      'diff',
+      --'diff', -- THIS ADDS THE DIFF SECTION OF THE STATUS LINE
       {
         'diagnostics',
         source = { 'nvim' },
@@ -515,4 +516,6 @@ require('lualine').setup {
   },
   inactive_sections = {
     lualine_c = { '%f %y %m' },
-    lualine_x = {
+    lualine_x = {},
+  },
+}
