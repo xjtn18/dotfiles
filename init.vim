@@ -44,7 +44,7 @@ call plug#end()
 
 
 colorscheme everforest
-set background=light
+set background=dark
 
 
 set foldcolumn=0
@@ -261,7 +261,7 @@ if exists("g:neovide")
    " Put anything you want to happen only in Neovide here
   cd ~/dev
 
-  set guifont=Cousine\ NFM:h17
+  set guifont=Cousine\ NFM:h15
   
   let g:neovide_cursor_vfx_mode = "pixiedust"
 
@@ -274,6 +274,8 @@ if exists("g:neovide")
 
   let g:neovide_refresh_rate = 120
   let g:neovide_refresh_rate_idle = 60
+  "let g:neovide_refresh_rate = 60
+  "let g:neovide_refresh_rate_idle = 5
 
   let g:neovide_fullscreen = v:true
 endif
@@ -383,36 +385,38 @@ require('lualine').setup {
 
 local colors = {
   red = '#FF6060',
-  grey = '#a0a1a7',
-  --black = '#383a42',
-  black = '#57B6F3',
+  grey = '#52504B',
+  black = '#262626',
+  normal = '#57B6F3',
   white = '#fffbef',
-  --idk = '#8BD1FE',
-  --idk = '#57B6F3',
-  idk = '#C9B79A',
+  tan = '#C9B79A',
   light_green = '#83a598',
   orange = '#fe8019',
   --green = '#8ec07c',
-  green = '#73C22F',
+  green = '#a0a100',
+  separator = '#272e33',
+  --purple = '#CBB1B1',
 }
 
 local theme = {
    normal = {
-      a = { fg = colors.white, bg = colors.black },
-      b = { fg = colors.white, bg = colors.grey },
-      c = { fg = colors.black, bg = colors.idk },
-      z = { fg = colors.white, bg = colors.black },
+      a = { fg = colors.white, bg = colors.normal },
+      b = { fg = colors.black, bg = colors.tan },
+      c = { fg = colors.orange, bg = colors.grey },
+      y = { fg = colors.black, bg = colors.tan },
+      z = { fg = colors.white, bg = colors.normal },
    },
    insert = {
       a = { fg = colors.white, bg = colors.green },
-      --c = { fg = colors.black, bg = colors.green },
+      --c = { fg = colors.white, bg = colors.green },
    },
    visual = {
       a = { fg = colors.white, bg = colors.orange },
-      --c = { fg = colors.black, bg = colors.orange },
+      --c = { fg = colors.white, bg = colors.orange },
    },
    replace = {
-      a = { fg = colors.white, bg = colors.light_green }
+      a = { fg = colors.white, bg = colors.light_green },
+      --c = { fg = colors.white, bg = colors.light_green },
    },
 }
 
@@ -430,7 +434,7 @@ local function process_sections(sections)
   for name, section in pairs(sections) do
     local left = name:sub(9, 10) < 'x'
     for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
-      table.insert(section, pos * 2, { empty, color = { fg = colors.white, bg = colors.white } })
+      table.insert(section, pos * 2, { empty, color = { fg = colors.normal, bg = colors.separator } })
     end
     for id, comp in ipairs(section) do
       if type(comp) ~= 'table' then
@@ -510,9 +514,18 @@ require('lualine').setup {
     },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { search_result, 'filetype' },
+    lualine_y = {
+      search_result,
+      'filetype'
+    },
     lualine_z = { '%l:%c', '%p%%/%L' },
   },
   inactive_sections = {
     lualine_c = { '%f %y %m' },
-    lualine_x = {
+    lualine_x = {},
+  },
+}
+
+END
+
+
