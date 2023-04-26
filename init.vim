@@ -126,7 +126,8 @@ nnoremap <leader>pe :e ~/AppData/Local/nvim-data/plugged<cr>
 
 
 " Set the cdpath so that I can easily cd into directories at this location
-set cdpath+=~/dev/intellimind;~/dev/projects;
+set cdpath+=~/dev/projects
+set cdpath+=~/dev/intellimind
 
 " Change into the (recent) project ive been working on (I need to update this
 " manually here)
@@ -478,7 +479,7 @@ require('lualine').setup {
     lualine_a = { 'mode' },
     lualine_b = {
       'branch',
-      'diff',
+      --'diff', -- THIS ADDS THE DIFF SECTION OF THE STATUS LINE
       {
         'diagnostics',
         source = { 'nvim' },
@@ -525,7 +526,3 @@ require('lualine').setup {
     lualine_x = {},
   },
 }
-
-END
-
-
