@@ -25,10 +25,14 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 
+" Auto-pairing
+Plug 'windwp/nvim-autopairs'
+
 " Colorschemes
 Plug 'EdenEast/nightfox.nvim'                            
 Plug 'Mofiqul/vscode.nvim'
 Plug 'neanias/everforest-nvim', { 'branch': 'main' }
+ 
 
 
 call plug#end()
@@ -46,12 +50,20 @@ lua require('config')  -- Execute all Lua-based configuration
 lua require('tabline') -- My custom behavior for naming tabs
 
 
-colorscheme everforest
+colorscheme duskfox
 set background=dark
 
 
 set foldcolumn=0
+
 set cursorline
+set cursorcolumn
+" Specify behavior of line/column HL for windows
+augroup LineColumnHL
+  autocmd!
+  autocmd WinEnter * set cursorcolumn cursorline
+  autocmd WinLeave * set nocursorcolumn nocursorline
+augroup END
 
 
 " Makes it so yanking copies to the system clipboard (side effect: makes pasting slower)
@@ -66,15 +78,13 @@ set sw=3
 " Convert tabs to spaces
 set expandtab
 
-set number
+set number relativenumber
 set autoindent
 set smartindent
 
 
-" set indentation level for different programming languages
-autocmd FileType javascript,json,vim,org,lua setlocal sw=2 ts=2
-autocmd FileType c,cpp setlocal sw=3 ts=3
-
+" set indentation level for certin programming languages
+autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
 
 " Auto save buffers on focus lost
 autocmd FocusLost * :update
@@ -85,10 +95,12 @@ autocmd FocusLost * :update
 " in your root directory has priortity, and can be used to 
 " 'ignore ignores' set in any .gitignore.
 
+autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
+
 
 "---------------|| Mappings || ---------------"
 " Reload both the init.vim and config.lua
-nnoremap <leader>rs :source $MYVIMRC<cr>:luafile <C-R>=stdpath('config') . '/lua/config.lua'<cr><cr>
+nnoremap <leader>s :source $MYVIMRC<cr>:luafile <C-R>=stdpath('config') . '/lua/config.lua'<cr><cr>
 
 """ Custom Telescope mappings:
 " Find files using Telescope command-line sugar.

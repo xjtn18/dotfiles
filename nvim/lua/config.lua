@@ -20,8 +20,12 @@ end
 -- PLUGIN CONFIGURATION |
 -- _____________________/
 
+-- Auto-pairs config
+require("nvim-autopairs").setup{}
+
+
 -- Treesitter config
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup{
   ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'rust', 'cpp'},
   highlight = {
     enable = true,
@@ -37,7 +41,7 @@ require('treesitter-context').setup{
   line_numbers = true,
   multiline_threshold = 20, -- Maximum number of lines to collapse for a single context line
   trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-  mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  mode = 'topline',  -- Line used to calculate context. Choices: 'cursor', 'topline'
   -- Separator between context and content. Should be a single character string, like '-'.
   -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
   separator = nil,
@@ -62,45 +66,65 @@ require('telescope').setup{
 }
 
 
--- Lualine config
+-- Nightfox config
+require('nightfox').setup{
+  options = {
+    styles = {
+      
+    }
+  }
+}
 
+
+-- Lualine config
 -- Slanted gaps preset theme (from Lualine github)
 
 local colors = {
-  normal = '#57B6F3',
-  tan = '#C9B79A',
-  middle = '#52504B',
-  red = '#FF6060',
-  black = '#000000',
-  white = '#ffffff',
-  orange = '#fe8019',
-  --green = '#a0a100',
-  green = '#8ec07c',
-  separator = '#272e33',
+  normal    = '#57B6F3',
+
+  insert    = '#98B009',
+
+  tan       = '#756E5D',
+  tan_fg    = '#191817',
+
+  middle    = '#41413F',
+  middle_fg = '#827F79',
+
+  red       = '#FF6060',
+  black     = '#000000',
+  white     = '#ffffff',
+  orange    = '#fe8019',
+
+  --separator = '#272e33',
+  separator = '#232136', -- duskfox
 }
 
 local theme = {
   normal = {
     a = { fg = colors.black, bg = colors.normal },
 
-    b = { fg = colors.black, bg = colors.tan },
-    c = { fg = colors.orange, bg = colors.middle },
+    b = { fg = colors.white, bg = colors.tan },
+    c = { fg = colors.middle_fg, bg = colors.middle },
     y = { fg = colors.white, bg = colors.middle },
   },
+
   insert = {
-    a = { fg = colors.black, bg = colors.green },
+    a = { fg = colors.black, bg = colors.insert },
     y = { fg = colors.white, bg = colors.middle },
   },
+
   command = {
     a = { fg = colors.black, bg = colors.normal },
     y = { fg = colors.white, bg = colors.middle },
   },
+
   visual = {
     a = { fg = colors.black, bg = colors.orange },
     y = { fg = colors.white, bg = colors.middle },
   },
+
   replace = {
-    a = { fg = colors.black, bg = colors.red },
+    a = { fg = colors.white, bg = colors.red },
     y = { fg = colors.white, bg = colors.middle },
   },
 }
@@ -177,7 +201,7 @@ require('lualine').setup {
         diagnostics_color = { warn = { bg = colors.orange, fg = colors.white } },
       },
       { 'filename', file_status = false, path = 1 },
-      { modified, color = { bg = colors.red } },
+      { modified, color = { fg = colors.white, bg = colors.red } },
       {
         '%w',
         cond = function()
