@@ -3,9 +3,14 @@
 set DOTFILES_DIR=%~dp0
 
 git pull
-del %USERPROFILE%\.rgignore
-del %USERPROFILE%\AppData\Local\nvim\init.vim
-mklink /H %USERPROFILE%\.rgignore "%DOTFILES_DIR%\.rgignore"
-mklink /H %USERPROFILE%\AppData\Local\nvim\init.vim "%DOTFILES_DIR%\init.vim"
 
-echo Dotfiles have been linked.
+:: Remove any existing version of these files
+del %USERPROFILE%\.rgignore
+if exist %USERPROFILE%\AppData\Local\nvim rmdir /S /Q %USERPROFILE%\AppData\Local\nvim
+
+:: Hardlink the files
+mklink /H %USERPROFILE%\.rgignore "%DOTFILES_DIR%\.rgignore"
+mklink /J %USERPROFILE%\AppData\Local\nvim "%DOTFILES_DIR%\nvim"
+
+echo Finished. Dotfiles are now synced.
+
