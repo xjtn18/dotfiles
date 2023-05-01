@@ -11,6 +11,9 @@
 
 call plug#begin()
 
+
+Plug 'glepnir/dashboard-nvim'             " Customizable splash screen
+
 Plug 'nvim-lua/plenary.nvim'              " Telescope (below) depends on it
 Plug 'nvim-telescope/telescope.nvim'      " Fuzzy file/grep project search tool
 
@@ -28,17 +31,16 @@ Plug 'nvim-tree/nvim-web-devicons'
 " Auto-pairing
 Plug 'windwp/nvim-autopairs'
 
+
 " Colorschemes
-Plug 'EdenEast/nightfox.nvim'                            
+Plug 'xjtn18/nightfox.nvim'                 " My fork of NightFox
 Plug 'Mofiqul/vscode.nvim'
 Plug 'neanias/everforest-nvim', { 'branch': 'main' }
  
 
-
 call plug#end()
 " filetype indent off   " Disable file-type-specific indentation
 " syntax off            " Disable syntax highlighting
-
 
 
 " Set the leader key
@@ -46,8 +48,8 @@ let mapleader = "\<Space>"
 
 
 " Execute the lua config file
-lua require('config')  -- Execute all Lua-based configuration
-lua require('tabline') -- My custom behavior for naming tabs
+lua require('config')  -- Execute my Lua config file
+lua require('tabline') -- My custom behavior for tab naming
 
 
 colorscheme duskfox
@@ -58,6 +60,7 @@ set foldcolumn=0
 
 set cursorline
 set cursorcolumn
+
 " Specify behavior of line/column HL for windows
 augroup LineColumnHL
   autocmd!
@@ -65,11 +68,12 @@ augroup LineColumnHL
   autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 
-
-" Makes it so yanking copies to the system clipboard (side effect: makes pasting slower)
-" Alternativaley, you can just use "+y to yank to system
-"   and "+p to paste from system.
-"set clipboard+=unnamedplus
+" Save folds information for my config files
+augroup SaveFolds
+  autocmd!
+  autocmd BufWinLeave *.vim,*.lua mkview
+  autocmd BufWinEnter *.vim,*.lua silent! loadview
+augroup END
 
 
 set ts=3
@@ -82,6 +86,22 @@ set number relativenumber
 set autoindent
 set smartindent
 
+set ignorecase
+set smartcase
+
+" VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
+" 'SHIFT-K' (I often do by accident).
+" .. issue explained here -> https://github.com/neovim/neovim/issues/21169
+set keywordprg=:help
+
+" Tells vim to see underscores as words
+set iskeyword-=_
+
+
+" Set the cdpath so that I can easily cd into directories at this location
+set cdpath+=~/dev/projects
+set cdpath+=~/dev/intellimind
+
 
 " set indentation level for certin programming languages
 autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
@@ -89,12 +109,7 @@ autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
 " Auto save buffers on focus lost
 autocmd FocusLost * :update
 
-
-" NOTE: With 'ripgrep', Telescope automatically ignores
-" searching anything in the .gitignore, BUT, .rgignore file
-" in your root directory has priortity, and can be used to 
-" 'ignore ignores' set in any .gitignore.
-
+" Disable line/column HL in Telescope prompt
 autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
 
 
@@ -102,27 +117,15 @@ autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
 " Reload both the init.vim and config.lua
 nnoremap <leader>s :source $MYVIMRC<cr>:luafile <C-R>=stdpath('config') . '/lua/config.lua'<cr><cr>
 
-""" Custom Telescope mappings:
-" Find files using Telescope command-line sugar.
+""" TELESCOPE MAPPINGS
 nnoremap <leader>f :Telescope find_files<cr>
-" Below command is for project string search
 nnoremap <leader>g :Telescope live_grep<cr>
-" Below command is for open-buffer switching
 nnoremap <leader>b :Telescope buffers<cr>
-" Below command is for reopening telescope in its previous state (retains your
-"   search queries).
 nnoremap <leader>r :Telescope resume<cr>
-
-" Not sure what this is for yet; haven't used it
-nnoremap <leader>h :Telescope help_tags<cr>
+" nnoremap <leader>h :Telescope help_tags<cr>
 
 " Remove the current highlighted words (like after a / search)
 nnoremap <ESC> :nohl<cr>
-
-" PlugInstall
-nnoremap <leader>pi :PlugInstall<cr>
-" PlugClean
-nnoremap <leader>pc :PlugClean<cr>
 
 
 " Open the previous buffer using leader -> TAB
@@ -134,11 +137,6 @@ nnoremap U <C-r>
 " Format entire file
 nnoremap <leader>= gg=G<C-o>
 
-" Change into current open file's directory
-nnoremap <leader>cd :lcd %:p:h<cr>
-
-" Kill all buffers
-nnoremap <leader>ka :bufdo bd<cr>
 
 " Open init.vim config file 
 nnoremap <leader>iv :e ~/AppData/Local/nvim/init.vim<cr>
@@ -149,21 +147,19 @@ nnoremap <leader>il :e ~/AppData/Local/nvim/lua/config.lua<cr>
 nnoremap <leader>pe :e ~/AppData/Local/nvim-data/plugged<cr>
 
 
-" Set the cdpath so that I can easily cd into directories at this location
-set cdpath+=~/dev/projects
-set cdpath+=~/dev/intellimind
-
-" Change into the (recent) project ive been working on (I need to update this
-" manually here)
-nnoremap <leader>ap :cd cvo_website<cr>
-
 " Open a new tab
 nnoremap <leader>t :tabnew<cr>
 nnoremap <leader>kt :tabclose<cr>
 
 " Moving between open tabs
-nnoremap <leader>q gT
-nnoremap <leader>w gt
+"nnoremap <leader>q gT
+"nnoremap <leader>w gt
+
+" Moving between windows
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
 
 " Center view on cursor after Shift-H/L
 nnoremap <S-h> Hzz
@@ -173,22 +169,30 @@ nnoremap <S-l> Lzz
 vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
 
 
-
+"---------------|| Commands || ---------------"
 " Commands for opening common files/folders
 command! DEV e ~/dev
 command! WID e ~/dev/notes/personal/WID.org
 
+" Change into current open file's directory
+command! CD lcd %:p:h
 
-" VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
-" 'SHIFT-K' (I often do by accident).
-" .. issue explained here -> https://github.com/neovim/neovim/issues/21169
-set keywordprg=:help
+" Kill all buffers
+command! KA bufdo bd
 
-" Tells vim to see underscores as words
-set iskeyword-=_
+" PlugInstall
+command! PI PlugInstall
+" PlugClean
+command! PC PlugClean
+
+" Change into the (recent) project ive been working on (I need to update this manually here)
+command! AP cd cvo_website
+
+" Return to dashboard
+command! D Dashboard
 
 
-" Neovide config
+" NEOVIDE CONFIG
 if exists("g:neovide")
    " Put anything you want to happen only in Neovide here
   cd ~/dev
