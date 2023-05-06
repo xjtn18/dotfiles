@@ -29,7 +29,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 
 " Auto-pairing
-Plug 'windwp/nvim-autopairs'
+Plug 'cohama/lexima.vim'
 
 
 " Colorschemes
@@ -46,15 +46,12 @@ call plug#end()
 " Set the leader key
 let mapleader = "\<Space>"
 
+colorscheme everforest
+set background=light
 
 " Execute the lua config file
 lua require('config')  -- Execute my Lua config file
 lua require('tabline') -- My custom behavior for tab naming
-
-
-colorscheme duskfox
-set background=dark
-
 
 set foldcolumn=0
 
@@ -162,8 +159,11 @@ nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
 " Center view on cursor after Shift-H/L
-nnoremap <S-h> Hzz
-nnoremap <S-l> Lzz
+nnoremap H Hzz
+nnoremap L Lzz
+
+" Center view on cursor after C-o
+nnoremap <leader>o <C-o>zz
 
 " Block comment
 vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
@@ -197,7 +197,7 @@ if exists("g:neovide")
    " Put anything you want to happen only in Neovide here
   cd ~/dev
 
-  set guifont=Cousine\ NFM:h15
+  set guifont=Cousine\ NFM:h13
   
   let g:neovide_cursor_vfx_mode = "pixiedust"
 
@@ -208,10 +208,10 @@ if exists("g:neovide")
 
   let g:neovide_hide_mouse_when_typing = v:true
 
-  let g:neovide_refresh_rate = 120
-  let g:neovide_refresh_rate_idle = 60
-  "let g:neovide_refresh_rate = 60
-  "let g:neovide_refresh_rate_idle = 5
+  "let g:neovide_refresh_rate = 120
+  "let g:neovide_refresh_rate_idle = 60
+  let g:neovide_refresh_rate = 60
+  let g:neovide_refresh_rate_idle = 5
 
   let g:neovide_fullscreen = v:true
 endif

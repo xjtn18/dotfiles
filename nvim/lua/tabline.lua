@@ -90,3 +90,4 @@ function GetCommonPath(path1, path2)
    end
    return table.concat(dirs1, '/', 1, i_different - 1)
 end
+

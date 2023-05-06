@@ -20,10 +20,6 @@ end
 -- PLUGIN CONFIGURATION |
 -- _____________________/
 
--- Auto-pairs config
-require("nvim-autopairs").setup{}
-
-
 -- Treesitter config
 require('nvim-treesitter.configs').setup{
   ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'rust', 'cpp'},
@@ -103,13 +99,12 @@ require('dashboard').setup{
 -- Lualine config
 -- Slanted gaps preset theme (from Lualine github)
 
-local colors = {
+local dark_colors = {
   normal    = '#57B6F3',
 
   insert    = '#98B009',
 
   tan       = '#756E5D',
-  tan_fg    = '#191817',
 
   middle    = '#41413F',
   middle_fg = '#827F79',
@@ -122,6 +117,26 @@ local colors = {
   --separator = '#272e33',
   separator = '#232136', -- duskfox
 }
+
+local light_colors = {
+  normal    = '#57B6F3',
+
+  insert    = '#98B009',
+
+  tan       = '#E2D6C4',
+
+  middle    = '#E7E4D9',
+  middle_fg = '#827F79',
+
+  red       = '#FF6060',
+  black     = '#ffffff',
+  white     = '#554E4A',
+  orange    = '#fe8019',
+
+  separator = '#fffbef', -- duskfox
+}
+
+local colors = vim.o.background == "light" and light_colors or dark_colors
 
 local theme = {
   normal = {
