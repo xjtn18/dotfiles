@@ -34,9 +34,9 @@ Plug 'cohama/lexima.vim'
 
 " Colorschemes
 Plug 'xjtn18/nightfox.nvim'                 " My fork of NightFox
-Plug 'Mofiqul/vscode.nvim'
 Plug 'neanias/everforest-nvim', { 'branch': 'main' }
- 
+Plug 'UnikMask/iroh-vim'
+
 
 call plug#end()
 " filetype indent off   " Disable file-type-specific indentation
@@ -46,8 +46,7 @@ call plug#end()
 " Set the leader key
 let mapleader = "\<Space>"
 
-colorscheme everforest
-set background=light
+set background=dark
 
 " Execute the lua config file
 lua require('config')  -- Execute my Lua config file
@@ -111,8 +110,8 @@ autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
 
 
 "---------------|| Mappings || ---------------"
-" Reload both the init.vim and config.lua
-nnoremap <leader>s :source $MYVIMRC<cr>:luafile <C-R>=stdpath('config') . '/lua/config.lua'<cr><cr>
+
+nnoremap <silent> <leader>s :lua source_config()<CR>
 
 """ TELESCOPE MAPPINGS
 nnoremap <leader>f :Telescope find_files<cr>
@@ -197,23 +196,23 @@ if exists("g:neovide")
    " Put anything you want to happen only in Neovide here
   cd ~/dev
 
-  set guifont=Cousine\ NFM:h13
+  set guifont=Cousine\ NFM:h14
   
   let g:neovide_cursor_vfx_mode = "pixiedust"
 
   let g:neovide_cursor_vfx_particle_density = 14.0
-  let g:neovide_cursor_vfx_particle_lifetime = 1.4
+  let g:neovide_cursor_vfx_particle_lifetime = 3.0
 
   let g:neovide_cursor_animation_length = 0.02
 
   let g:neovide_hide_mouse_when_typing = v:true
 
-  "let g:neovide_refresh_rate = 120
-  "let g:neovide_refresh_rate_idle = 60
-  let g:neovide_refresh_rate = 60
-  let g:neovide_refresh_rate_idle = 5
+  let g:neovide_refresh_rate = 120
+  let g:neovide_refresh_rate_idle = 60
+  "let g:neovide_refresh_rate = 60
+  "let g:neovide_refresh_rate_idle = 5
 
-  let g:neovide_fullscreen = v:true
+  "let g:neovide_fullscreen = v:true
 endif
 
 
