@@ -117,7 +117,7 @@ local nightfox = require('nightfox')
 nightfox.setup{
   palettes = {
     terafox = {
-      fg1 = '#d38007', -- cursor
+      fg1 = '#D87E34', -- cursor
       fg2 = '#88756D', -- special chars, inactive tab fg
       fg3 = '#7d5650', -- line numbers
 
@@ -136,7 +136,7 @@ nightfox.setup{
       green   = Shade.new('#808A4A', '#8eb2af', '#688b89'),  -- 1: strings
       yellow  = Shade.new('#E7AC4E', '#fdb292', '#d78b6c'),  -- 1: Imports, cursor line number
       --blue    = Shade.new('#D7B86A', '#d6caab', '#4d7d90'),  -- 1: attrs, 2: functions, tags
-      blue    = Shade.new('#d6caab', '#d6caab', '#4d7d90'),  -- 1: attrs, 2: functions, tags
+      blue    = Shade.new('#d6caab', '#AFA489', '#4d7d90'),  -- 1: attrs, 2: functions, tags
       cyan    = Shade.new('#E7AC4E', '#899470', '#89aeb8'),  -- 1: classes, elements, 2: parameters
       orange  = Shade.new('#9eb185', '#E7AC4E', '#d96f3e'),  -- 1: numbers, 2: constants
       red     = Shade.new('#c2604c', '#eb746b', '#c54e45'),  -- 1: statements
@@ -217,7 +217,7 @@ local theme = {
   },
 
   command = {
-    a = { fg = colors.black, bg = colors.normal },
+    a = { fg = colors.normal_fg, bg = colors.normal },
     y = { fg = colors.white, bg = colors.middle },
   },
 
@@ -338,4 +338,41 @@ require('lualine').setup {
   },
 }
 
+
+-- Neovide config
+
+-- Check if Neovide is running
+if vim.g.neovide then
+    -- Function with the first set of values
+    local function neovide_config_home()
+        vim.cmd("cd ~/dev")
+        vim.opt.guifont = "Cousine NFM:h13"
+      
+        vim.g.neovide_cursor_vfx_mode = "pixiedust"
+      
+        vim.g.neovide_cursor_vfx_particle_density = 14.0
+        vim.g.neovide_cursor_vfx_particle_lifetime = 3.0
+        vim.g.neovide_cursor_animation_length = 0.02
+        vim.g.neovide_hide_mouse_when_typing = true
+      
+        vim.g.neovide_refresh_rate = 120
+        vim.g.neovide_refresh_rate_idle = 60
+    end
+
+    -- Function with the second set of values (change the values as needed)
+    local function neovide_config_work()
+        vim.cmd("cd ~/dev")
+        vim.opt.guifont = "Cousine NFM:h13"
+      
+        vim.g.neovide_cursor_vfx_mode = ""
+        vim.g.neovide_cursor_animation_length = 0
+        vim.g.neovide_hide_mouse_when_typing = true
+      
+        vim.g.neovide_refresh_rate = 30
+        vim.g.neovide_refresh_rate_idle = 30
+    end
+
+    --neovide_config_home()
+    neovide_config_work()
+end
 

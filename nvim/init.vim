@@ -191,28 +191,3 @@ command! AP cd cvo_website
 command! D Dashboard
 
 
-" NEOVIDE CONFIG
-if exists("g:neovide")
-   " Put anything you want to happen only in Neovide here
-  cd ~/dev
-
-  set guifont=Cousine\ NFM:h14
-  
-  let g:neovide_cursor_vfx_mode = "pixiedust"
-
-  let g:neovide_cursor_vfx_particle_density = 14.0
-  let g:neovide_cursor_vfx_particle_lifetime = 3.0
-
-  let g:neovide_cursor_animation_length = 0.02
-
-  let g:neovide_hide_mouse_when_typing = v:true
-
-  let g:neovide_refresh_rate = 120
-  let g:neovide_refresh_rate_idle = 60
-  "let g:neovide_refresh_rate = 60
-  "let g:neovide_refresh_rate_idle = 5
-
-  "let g:neovide_fullscreen = v:true
-endif
-
-
