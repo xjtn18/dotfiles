@@ -50,7 +50,9 @@ set background=dark
 
 " Execute the lua config file
 lua require('config')  -- Execute my Lua config file
-lua require('tabline') -- My custom behavior for tab naming
+"lua require('tabline') -- My custom behavior for tab naming
+
+source ~/AppData/Local/nvim/tabline.vim
 
 set foldcolumn=0
 
@@ -171,6 +173,7 @@ vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
 "---------------|| Commands || ---------------"
 " Commands for opening common files/folders
 command! DEV e ~/dev
+command! PLAY e ~/dev/playground
 command! WID e ~/dev/notes/personal/WID.org
 
 " Change into current open file's directory
@@ -189,5 +192,6 @@ command! AP cd cvo_website
 
 " Return to dashboard
 command! D Dashboard
+
 
 
