@@ -133,7 +133,7 @@ nnoremap <leader><Tab> <C-^>
 nnoremap U <C-r>
 
 " Format entire file
-nnoremap <leader>= gg=G<C-o>
+nnoremap <leader>= gg=G<C-o>zz
 
 
 " Open init.vim config file 

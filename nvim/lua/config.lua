@@ -343,36 +343,36 @@ require('lualine').setup {
 
 -- Check if Neovide is running
 if vim.g.neovide then
-    -- Function with the first set of values
-    local function neovide_config_home()
-        vim.cmd("cd ~/dev")
-        vim.opt.guifont = "Cousine NFM:h13"
-      
-        vim.g.neovide_cursor_vfx_mode = "pixiedust"
-      
-        vim.g.neovide_cursor_vfx_particle_density = 14.0
-        vim.g.neovide_cursor_vfx_particle_lifetime = 3.0
-        vim.g.neovide_cursor_animation_length = 0.02
-        vim.g.neovide_hide_mouse_when_typing = true
-      
-        vim.g.neovide_refresh_rate = 120
-        vim.g.neovide_refresh_rate_idle = 60
-    end
+  -- Function with the first set of values
+  local function neovide_config_home()
+    vim.cmd("cd ~/dev")
+    vim.opt.guifont = "Cousine NFM:h14"
 
-    -- Function with the second set of values (change the values as needed)
-    local function neovide_config_work()
-        vim.cmd("cd ~/dev")
-        vim.opt.guifont = "Cousine NFM:h13"
-      
-        vim.g.neovide_cursor_vfx_mode = ""
-        vim.g.neovide_cursor_animation_length = 0
-        vim.g.neovide_hide_mouse_when_typing = true
-      
-        vim.g.neovide_refresh_rate = 30
-        vim.g.neovide_refresh_rate_idle = 30
-    end
+    vim.g.neovide_cursor_vfx_mode = "pixiedust"
 
-    --neovide_config_home()
-    neovide_config_work()
+    vim.g.neovide_cursor_vfx_particle_density = 10.0
+    vim.g.neovide_cursor_vfx_particle_lifetime = 3.0
+    vim.g.neovide_cursor_animation_length = 0.02
+    vim.g.neovide_hide_mouse_when_typing = true
+
+    vim.g.neovide_refresh_rate = 120
+    vim.g.neovide_refresh_rate_idle = 60
+  end
+
+  -- Function with the second set of values (change the values as needed)
+  local function neovide_config_work()
+    vim.cmd("cd ~/dev")
+    vim.opt.guifont = "Cousine NFM:h13"
+
+    vim.g.neovide_cursor_vfx_mode = ""
+    vim.g.neovide_cursor_animation_length = 0
+    vim.g.neovide_hide_mouse_when_typing = true
+
+    vim.g.neovide_refresh_rate = 30
+    vim.g.neovide_refresh_rate_idle = 30
+  end
+
+  neovide_config_home()
+  --neovide_config_work()
 end
 
