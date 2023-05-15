@@ -166,6 +166,10 @@ nnoremap L Lzz
 " Center view on cursor after C-o
 nnoremap <leader>o <C-o>zz
 
+" Center view on 'next', forward and back
+nnoremap n nzz
+nnoremap N Nzz
+
 " Block comment
 vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
 
