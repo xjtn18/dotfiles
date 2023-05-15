@@ -29,6 +29,16 @@ end
 vim.api.nvim_set_option("clipboard","unnamed")
 
 
+
+function _G.adjust_font_size(amt)
+    local size = tonumber(string.match(vim.o.guifont, "h(%d+)")) + amt
+    vim.cmd('set guifont=Cousine\\ NFM:h' .. size)
+end
+
+vim.api.nvim_set_keymap('n', '<Leader>+', ':lua _G.adjust_font_size(1)<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>-', ':lua _G.adjust_font_size(-1)<CR>', {noremap = true, silent = true})
+
+
 --------------------------------------------------------------------------------------------------------------------------|
 -- PLUGIN CONFIGURATION |
 -- _____________________/
@@ -73,6 +83,34 @@ require('telescope').setup{
     },
   },
 }
+
+
+-- NVim-tree config
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+    side = 'right',
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 
 
 -- Dashboard config
@@ -285,6 +323,7 @@ require('lualine').setup {
     theme = theme,
     component_separators = '',
     section_separators = { left = '', right = '' },
+    disabled_filetypes = {'NvimTree'}
   },
   sections = process_sections {
     lualine_a = { 'mode' },
@@ -343,36 +382,36 @@ require('lualine').setup {
 
 -- Check if Neovide is running
 if vim.g.neovide then
-    -- Function with the first set of values
-    local function neovide_config_home()
-        vim.cmd("cd ~/dev")
-        vim.opt.guifont = "Cousine NFM:h13"
-      
-        vim.g.neovide_cursor_vfx_mode = "pixiedust"
-      
-        vim.g.neovide_cursor_vfx_particle_density = 14.0
-        vim.g.neovide_cursor_vfx_particle_lifetime = 3.0
-        vim.g.neovide_cursor_animation_length = 0.02
-        vim.g.neovide_hide_mouse_when_typing = true
-      
-        vim.g.neovide_refresh_rate = 120
-        vim.g.neovide_refresh_rate_idle = 60
-    end
+  -- Function with the first set of values
+  local function neovide_config_home()
+    vim.cmd("cd ~/dev")
+    vim.opt.guifont = "Cousine NFM:h14"
 
-    -- Function with the second set of values (change the values as needed)
-    local function neovide_config_work()
-        vim.cmd("cd ~/dev")
-        vim.opt.guifont = "Cousine NFM:h13"
-      
-        vim.g.neovide_cursor_vfx_mode = ""
-        vim.g.neovide_cursor_animation_length = 0
-        vim.g.neovide_hide_mouse_when_typing = true
-      
-        vim.g.neovide_refresh_rate = 30
-        vim.g.neovide_refresh_rate_idle = 30
-    end
+    vim.g.neovide_cursor_vfx_mode = "pixiedust"
 
-    --neovide_config_home()
-    neovide_config_work()
+    vim.g.neovide_cursor_vfx_particle_density = 10.0
+    vim.g.neovide_cursor_vfx_particle_lifetime = 3.0
+    vim.g.neovide_cursor_animation_length = 0.02
+    vim.g.neovide_hide_mouse_when_typing = true
+
+    vim.g.neovide_refresh_rate = 120
+    vim.g.neovide_refresh_rate_idle = 60
+  end
+
+  -- Function with the second set of values (change the values as needed)
+  local function neovide_config_work()
+    vim.cmd("cd ~/dev")
+    vim.opt.guifont = "Cousine NFM:h13"
+
+    vim.g.neovide_cursor_vfx_mode = ""
+    vim.g.neovide_cursor_animation_length = 0
+    vim.g.neovide_hide_mouse_when_typing = true
+
+    vim.g.neovide_refresh_rate = 30
+    vim.g.neovide_refresh_rate_idle = 30
+  end
+
+  neovide_config_home()
+  --neovide_config_work()
 end
 

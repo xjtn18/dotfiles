@@ -12,34 +12,37 @@
 call plug#begin()
 
 
-Plug 'glepnir/dashboard-nvim'             " Customizable splash screen
+  Plug 'glepnir/dashboard-nvim'             " Customizable splash screen
 
-Plug 'nvim-lua/plenary.nvim'              " Telescope (below) depends on it
-Plug 'nvim-telescope/telescope.nvim'      " Fuzzy file/grep project search tool
+  Plug 'nvim-lua/plenary.nvim'              " Telescope (below) depends on it
+  Plug 'nvim-telescope/telescope.nvim'      " Fuzzy file/grep project search tool
 
-" JSX highlighting/indentation support
-Plug 'maxmellon/vim-jsx-pretty'
+  " JSX highlighting/indentation support
+  Plug 'maxmellon/vim-jsx-pretty'
 
-" Context view + language highlighting support
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-context'
+  " Context view + language highlighting support
+  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter-context'
 
-" Status line config
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-tree/nvim-web-devicons'
+  " Status line config
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
 
-" Auto-pairing
-Plug 'cohama/lexima.vim'
+  " Nvim-tree
+  Plug 'nvim-tree/nvim-tree.lua'
+
+  " Auto-pairing
+  Plug 'cohama/lexima.vim'
 
 
-" Colorschemes
-Plug 'xjtn18/nightfox.nvim'                 " My fork of NightFox
-Plug 'neanias/everforest-nvim', { 'branch': 'main' }
-Plug 'UnikMask/iroh-vim'
+  " Colorschemes
+  Plug 'xjtn18/nightfox.nvim'                 " My fork of NightFox
+  Plug 'neanias/everforest-nvim', { 'branch': 'main' }
+  Plug 'UnikMask/iroh-vim'
 
 
 call plug#end()
-" filetype indent off   " Disable file-type-specific indentation
+filetype indent off   " Disable file-type-specific indentation
 " syntax off            " Disable syntax highlighting
 
 
@@ -50,27 +53,23 @@ set background=dark
 
 " Execute the lua config file
 lua require('config')  -- Execute my Lua config file
-"lua require('tabline') -- My custom behavior for tab naming
 
 source ~/AppData/Local/nvim/tabline.vim
 
 set foldcolumn=0
 
-set cursorline
-set cursorcolumn
-
 " Specify behavior of line/column HL for windows
 augroup LineColumnHL
-  autocmd!
-  autocmd WinEnter * set cursorcolumn cursorline
-  autocmd WinLeave * set nocursorcolumn nocursorline
+autocmd!
+autocmd WinEnter * set cursorcolumn cursorline
+autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 
 " Save folds information for my config files
 augroup SaveFolds
-  autocmd!
-  autocmd BufWinLeave *.vim,*.lua mkview
-  autocmd BufWinEnter *.vim,*.lua silent! loadview
+autocmd!
+autocmd BufWinLeave *.vim,*.lua mkview
+autocmd BufWinEnter *.vim,*.lua silent! loadview
 augroup END
 
 
@@ -104,6 +103,8 @@ set cdpath+=~/dev/intellimind
 " set indentation level for certin programming languages
 autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
 
+autocmd FileType rust,c,cpp setlocal sw=3 ts=3
+
 " Auto save buffers on focus lost
 autocmd FocusLost * :update
 
@@ -113,7 +114,10 @@ autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
 
 "---------------|| Mappings || ---------------"
 
-nnoremap <silent> <leader>s :lua source_config()<CR>
+nnoremap <silent> <leader>s :lua source_config()<cr>
+
+" Open nvim-tree (file explorer)
+nnoremap <leader>e :NvimTreeOpen<cr>
 
 """ TELESCOPE MAPPINGS
 nnoremap <leader>f :Telescope find_files<cr>
@@ -133,7 +137,7 @@ nnoremap <leader><Tab> <C-^>
 nnoremap U <C-r>
 
 " Format entire file
-nnoremap <leader>= gg=G<C-o>
+nnoremap <leader>= gg=G<C-o>zz
 
 
 " Open init.vim config file 
