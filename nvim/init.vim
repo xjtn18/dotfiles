@@ -12,186 +12,190 @@
 call plug#begin()
 
 
-Plug 'glepnir/dashboard-nvim'             " Customizable splash screen
+  Plug 'glepnir/dashboard-nvim'             " Customizable splash screen
 
-Plug 'nvim-lua/plenary.nvim'              " Telescope (below) depends on it
-Plug 'nvim-telescope/telescope.nvim'      " Fuzzy file/grep project search tool
+  Plug 'nvim-lua/plenary.nvim'              " Telescope (below) depends on it
+  Plug 'nvim-telescope/telescope.nvim'      " Fuzzy file/grep project search tool
 
-" JSX highlighting/indentation support
-Plug 'maxmellon/vim-jsx-pretty'
+  " JSX highlighting/indentation support
+  Plug 'maxmellon/vim-jsx-pretty'
 
-" Context view + language highlighting support
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-context'
+  " Context view + language highlighting support
+  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter-context'
 
-" Status line config
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-tree/nvim-web-devicons'
+  " Status line config
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
 
-" Auto-pairing
-Plug 'cohama/lexima.vim'
+  " Nvim-tree
+  Plug 'nvim-tree/nvim-tree.lua'
+
+  " Auto-pairing
+  Plug 'cohama/lexima.vim'
 
 
-" Colorschemes
-Plug 'xjtn18/nightfox.nvim'                 " My fork of NightFox
-Plug 'neanias/everforest-nvim', { 'branch': 'main' }
-Plug 'UnikMask/iroh-vim'
+  " Colorschemes
+  Plug 'xjtn18/nightfox.nvim'                 " My fork of NightFox
+  Plug 'neanias/everforest-nvim', { 'branch': 'main' }
+  Plug 'UnikMask/iroh-vim'
 
 
 call plug#end()
-" filetype indent off   " Disable file-type-specific indentation
-" syntax off            " Disable syntax highlighting
+  filetype indent off   " Disable file-type-specific indentation
+  " syntax off            " Disable syntax highlighting
 
 
-" Set the leader key
-let mapleader = "\<Space>"
+  " Set the leader key
+  let mapleader = "\<Space>"
 
-set background=dark
+  set background=dark
 
-" Execute the lua config file
-lua require('config')  -- Execute my Lua config file
-"lua require('tabline') -- My custom behavior for tab naming
+  " Execute the lua config file
+  lua require('config')  -- Execute my Lua config file
 
-source ~/AppData/Local/nvim/tabline.vim
+  source ~/AppData/Local/nvim/tabline.vim
 
-set foldcolumn=0
+  set foldcolumn=0
 
-set cursorline
-set cursorcolumn
-
-" Specify behavior of line/column HL for windows
-augroup LineColumnHL
+  " Specify behavior of line/column HL for windows
+  augroup LineColumnHL
   autocmd!
   autocmd WinEnter * set cursorcolumn cursorline
   autocmd WinLeave * set nocursorcolumn nocursorline
-augroup END
+  augroup END
 
-" Save folds information for my config files
-augroup SaveFolds
+  " Save folds information for my config files
+  augroup SaveFolds
   autocmd!
   autocmd BufWinLeave *.vim,*.lua mkview
   autocmd BufWinEnter *.vim,*.lua silent! loadview
-augroup END
+  augroup END
 
 
-set ts=3
-set sw=3
+  set ts=3
+  set sw=3
 
-" Convert tabs to spaces
-set expandtab
+  " Convert tabs to spaces
+  set expandtab
 
-set number relativenumber
-set autoindent
-set smartindent
+  set number relativenumber
+  set autoindent
+  set smartindent
 
-set ignorecase
-set smartcase
+  set ignorecase
+  set smartcase
 
-" VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
-" 'SHIFT-K' (I often do by accident).
-" .. issue explained here -> https://github.com/neovim/neovim/issues/21169
-set keywordprg=:help
+  " VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
+  " 'SHIFT-K' (I often do by accident).
+  " .. issue explained here -> https://github.com/neovim/neovim/issues/21169
+  set keywordprg=:help
 
-" Tells vim to see underscores as words
-set iskeyword-=_
-
-
-" Set the cdpath so that I can easily cd into directories at this location
-set cdpath+=~/dev/projects
-set cdpath+=~/dev/intellimind
+  " Tells vim to see underscores as words
+  set iskeyword-=_
 
 
-" set indentation level for certin programming languages
-autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
-
-" Auto save buffers on focus lost
-autocmd FocusLost * :update
-
-" Disable line/column HL in Telescope prompt
-autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
+  " Set the cdpath so that I can easily cd into directories at this location
+  set cdpath+=~/dev/projects
+  set cdpath+=~/dev/intellimind
 
 
-"---------------|| Mappings || ---------------"
+  " set indentation level for certin programming languages
+  autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
 
-nnoremap <silent> <leader>s :lua source_config()<CR>
+  autocmd FileType rust,c,cpp setlocal sw=3 ts=3
 
-""" TELESCOPE MAPPINGS
-nnoremap <leader>f :Telescope find_files<cr>
-nnoremap <leader>g :Telescope live_grep<cr>
-nnoremap <leader>b :Telescope buffers<cr>
-nnoremap <leader>r :Telescope resume<cr>
-" nnoremap <leader>h :Telescope help_tags<cr>
+  " Auto save buffers on focus lost
+  autocmd FocusLost * :update
 
-" Remove the current highlighted words (like after a / search)
-nnoremap <ESC> :nohl<cr>
+  " Disable line/column HL in Telescope prompt
+  autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
 
 
-" Open the previous buffer using leader -> TAB
-nnoremap <leader><Tab> <C-^>
+  "---------------|| Mappings || ---------------"
 
-" Remapping of 'redo'
-nnoremap U <C-r>
+  nnoremap <silent> <leader>s :lua source_config()<cr>
 
-" Format entire file
-nnoremap <leader>= gg=G<C-o>zz
+  " Open nvim-tree (file explorer)
+  nnoremap <leader>e :NvimTreeOpen<cr>
 
+  """ TELESCOPE MAPPINGS
+  nnoremap <leader>f :Telescope find_files<cr>
+  nnoremap <leader>g :Telescope live_grep<cr>
+  nnoremap <leader>b :Telescope buffers<cr>
+  nnoremap <leader>r :Telescope resume<cr>
+  " nnoremap <leader>h :Telescope help_tags<cr>
 
-" Open init.vim config file 
-nnoremap <leader>iv :e ~/AppData/Local/nvim/init.vim<cr>
-" Open config.lua config file 
-nnoremap <leader>il :e ~/AppData/Local/nvim/lua/config.lua<cr>
-
-" Open plugged folder (to quickly edit plugin files)
-nnoremap <leader>pe :e ~/AppData/Local/nvim-data/plugged<cr>
-
-
-" Open a new tab
-nnoremap <leader>t :tabnew<cr>
-nnoremap <leader>kt :tabclose<cr>
-
-" Moving between open tabs
-"nnoremap <leader>q gT
-"nnoremap <leader>w gt
-
-" Moving between windows
-nnoremap <leader>wh <C-w>h
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wl <C-w>l
-
-" Center view on cursor after Shift-H/L
-nnoremap H Hzz
-nnoremap L Lzz
-
-" Center view on cursor after C-o
-nnoremap <leader>o <C-o>zz
-
-" Block comment
-vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
+  " Remove the current highlighted words (like after a / search)
+  nnoremap <ESC> :nohl<cr>
 
 
-"---------------|| Commands || ---------------"
-" Commands for opening common files/folders
-command! DEV e ~/dev
-command! PLAY e ~/dev/playground
-command! WID e ~/dev/notes/personal/WID.org
+  " Open the previous buffer using leader -> TAB
+  nnoremap <leader><Tab> <C-^>
 
-" Change into current open file's directory
-command! CD lcd %:p:h
+  " Remapping of 'redo'
+  nnoremap U <C-r>
 
-" Kill all buffers
-command! KA bufdo bd
+  " Format entire file
+  nnoremap <leader>= gg=G<C-o>zz
 
-" PlugInstall
-command! PI PlugInstall
-" PlugClean
-command! PC PlugClean
 
-" Change into the (recent) project ive been working on (I need to update this manually here)
-command! AP cd cvo_website
+  " Open init.vim config file 
+  nnoremap <leader>iv :e ~/AppData/Local/nvim/init.vim<cr>
+  " Open config.lua config file 
+  nnoremap <leader>il :e ~/AppData/Local/nvim/lua/config.lua<cr>
 
-" Return to dashboard
-command! D Dashboard
+  " Open plugged folder (to quickly edit plugin files)
+  nnoremap <leader>pe :e ~/AppData/Local/nvim-data/plugged<cr>
+
+
+  " Open a new tab
+  nnoremap <leader>t :tabnew<cr>
+  nnoremap <leader>kt :tabclose<cr>
+
+  " Moving between open tabs
+  "nnoremap <leader>q gT
+  "nnoremap <leader>w gt
+
+  " Moving between windows
+  nnoremap <leader>wh <C-w>h
+  nnoremap <leader>wj <C-w>j
+  nnoremap <leader>wk <C-w>k
+  nnoremap <leader>wl <C-w>l
+
+  " Center view on cursor after Shift-H/L
+  nnoremap H Hzz
+  nnoremap L Lzz
+
+  " Center view on cursor after C-o
+  nnoremap <leader>o <C-o>zz
+
+  " Block comment
+  vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
+
+
+  "---------------|| Commands || ---------------"
+  " Commands for opening common files/folders
+  command! DEV e ~/dev
+  command! PLAY e ~/dev/playground
+  command! WID e ~/dev/notes/personal/WID.org
+
+  " Change into current open file's directory
+  command! CD lcd %:p:h
+
+  " Kill all buffers
+  command! KA bufdo bd
+
+  " PlugInstall
+  command! PI PlugInstall
+  " PlugClean
+  command! PC PlugClean
+
+  " Change into the (recent) project ive been working on (I need to update this manually here)
+  command! AP cd cvo_website
+
+  " Return to dashboard
+  command! D Dashboard
 
 
 
