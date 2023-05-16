@@ -45,7 +45,7 @@ vim.api.nvim_set_keymap('n', '<Leader>-', ':lua _G.adjust_font_size(-1)<CR>', {n
 
 -- Treesitter config
 require('nvim-treesitter.configs').setup{
-  ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'rust', 'cpp'},
+  ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'rust', 'cpp', 'python'},
   highlight = {
     enable = true,
   },
@@ -101,7 +101,7 @@ require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
     width = 30,
-    side = 'right',
+    side = 'left',
   },
   renderer = {
     group_empty = true,
@@ -292,6 +292,9 @@ local function process_sections(sections)
         section[id] = comp
       end
       comp.separator = left and { right = '' } or { left = '' }
+      --comp.separator = left and { right = '▙' } or { left = '▜' }
+      --comp.separator = left and { right = '▌' } or { left = '▐' }
+      --comp.separator = left and { right = '' } or { left = '' }
     end
   end
   return sections
@@ -322,7 +325,7 @@ require('lualine').setup {
   options = {
     theme = theme,
     component_separators = '',
-    section_separators = { left = '', right = '' },
+    --section_separators = { left = '', right = '' },
     disabled_filetypes = {'NvimTree'}
   },
   sections = process_sections {
@@ -411,7 +414,7 @@ if vim.g.neovide then
     vim.g.neovide_refresh_rate_idle = 30
   end
 
-  neovide_config_home()
-  --neovide_config_work()
+  --neovide_config_home()
+  neovide_config_work()
 end
 

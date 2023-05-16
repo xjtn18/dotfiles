@@ -103,7 +103,7 @@ set cdpath+=~/dev/intellimind
 " set indentation level for certin programming languages
 autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2
 
-autocmd FileType rust,c,cpp setlocal sw=3 ts=3
+autocmd FileType rust,c,cpp,python setlocal sw=3 ts=3
 
 " Auto save buffers on focus lost
 autocmd FocusLost * :update
@@ -117,7 +117,7 @@ autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn
 nnoremap <silent> <leader>s :lua source_config()<cr>
 
 " Open nvim-tree (file explorer)
-nnoremap <leader>e :NvimTreeOpen<cr>
+nnoremap <leader>e :NvimTreeFindFileToggle<cr>zz
 
 """ TELESCOPE MAPPINGS
 nnoremap <leader>f :Telescope find_files<cr>
@@ -183,6 +183,7 @@ vnoremap <leader>/ :s#^#// <cr> :nohl<cr>
 command! DEV e ~/dev
 command! PLAY e ~/dev/playground
 command! WID e ~/dev/notes/personal/WID.org
+command! ALAC e ~/AppData/Roaming/alacritty/alacritty.yml
 
 " Change into current open file's directory
 command! CD lcd %:p:h
