@@ -1,2 +1,2 @@
-GuiFont Cousine NFM:h14
+GuiFont Cousine NFM:h13
 set linespace=-1
