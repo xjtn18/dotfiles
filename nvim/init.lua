@@ -16,6 +16,9 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
 
+-- Reduce the space between lines
+vim.cmd('set linespace=-3')
+
 -- Run the tab-naming config file
 vim.cmd('source ~/AppData/Local/nvim/vimscript/tabline.vim')
 
