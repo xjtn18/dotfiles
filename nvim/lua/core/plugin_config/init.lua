@@ -1,0 +1,6 @@
+require("core.plugin_config.nightfox")
+require("core.plugin_config.dashboard")
+require("core.plugin_config.lualine")
+require("core.plugin_config.treesitter")
+require("core.plugin_config.telescope")
+require("core.plugin_config.nvim-tree")
