@@ -1,15 +1,13 @@
 -- MY COLOR SCHEME
 
 local Shade = require("nightfox.lib.shade")
-local nightfox = require('nightfox')
 
-nightfox.setup{
+require('nightfox').setup{
   palettes = {
     terafox = {
       fg1 = '#D87E34', -- cursor
       fg2 = '#88756D', -- special chars, inactive tab fg
       fg3 = '#7d5650', -- line numbers
-
 
       bg0  = '#272524', -- secondary bg
       bg1  = '#2e2b2a', -- main bg
@@ -18,7 +16,8 @@ nightfox.setup{
       bg4  = '#d6caab', -- Conceal, border fg (telescope border)
 
       sel0 = '#3B5754', -- Popup bg, visual selection bg
-      comment = '#634C47',
+      --comment = '#634C47',
+      comment = '#D87E34',
 
       white   = Shade.new('#d6caab', '#eeeeee', '#c8c8c8'),  -- 1: variables
       magenta = Shade.new('#c2604c', '#789B98', '#934e69'),  -- 1: keywords, 2: control flow

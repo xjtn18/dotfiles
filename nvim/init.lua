@@ -16,9 +16,6 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
 
--- Reduce the space between lines
-vim.cmd('set linespace=-3')
-
 -- Run the tab-naming config file
 vim.cmd('source ~/AppData/Local/nvim/vimscript/tabline.vim')
 
@@ -97,6 +94,7 @@ end
 local function config_home()
   --vim.opt.guifont = "Cousine NFM:h17"
   vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
+  vim.cmd('set linespace=-2') -- Reduce the space between lines
 
   if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
@@ -112,7 +110,9 @@ end
 
 
 local function config_work()
-  vim.opt.guifont = "Cousine NFM:h13"
+  --vim.opt.guifont = "Cousine NFM:h13"
+  vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
+  --vim.cmd('set linespace=-1') -- Reduce the space between lines
 
   if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = ""
@@ -124,6 +124,7 @@ local function config_work()
 end
 
 
-config_home()
---config_work()
+--config_home()
+config_work()
+
 config_common()
