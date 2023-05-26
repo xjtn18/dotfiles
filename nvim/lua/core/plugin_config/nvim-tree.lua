@@ -6,18 +6,18 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+-- Show dotfiles
+vim.g.nvim_tree_hide_dotfiles = 0
+
 -- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
-    width = 60,
+    width = 50,
     side = 'left',
     signcolumn='no'
   },
   renderer = {
     group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
   },
 })

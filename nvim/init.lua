@@ -17,7 +17,7 @@ vim.cmd('syntax on')
 
 
 -- Run the tab-naming config file
-vim.cmd('source ~/AppData/Local/nvim/vimscript/tabline.vim')
+vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/tabline.vim')
 
 
 -- Specify behavior of line/column HL for windows
