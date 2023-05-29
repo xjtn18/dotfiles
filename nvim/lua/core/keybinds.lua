@@ -12,7 +12,7 @@ end
 -- Function for quickly zooming in/out
 function adjust_font_size(amt)
   local size = tonumber(string.match(vim.o.guifont, "h(%d+)")) + amt
-  vim.cmd('set guifont=Cousine\\ NFM:h' .. size)
+  vim.cmd('set guifont=BlexMono\\ Nerd\\ Font\\ Mono:h' .. size)
 end
 
 
@@ -38,7 +38,7 @@ vim.api.nvim_set_keymap('n', '<leader>g', ':Telescope live_grep<cr>', { noremap 
 vim.api.nvim_set_keymap('n', '<leader>b', ':Telescope buffers<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>r', ':Telescope resume<cr>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<Esc>', ':nohl<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Esc>', ':nohl<cr>:match none<cr>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader><Tab>', '<C-^>', { noremap = true })
 

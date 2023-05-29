@@ -94,7 +94,7 @@ end
 local function config_home()
   --vim.opt.guifont = "Cousine NFM:h17"
   vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
-  vim.cmd('set linespace=-2') -- Reduce the space between lines
+  --vim.cmd('set linespace=-2') -- Reduce the space between lines
 
   if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
@@ -124,7 +124,7 @@ local function config_work()
 end
 
 
---config_home()
-config_work()
+config_home()
+--config_work()
 
 config_common()

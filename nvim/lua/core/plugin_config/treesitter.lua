@@ -1,6 +1,10 @@
 -- Treesitter config
+
+require 'nvim-treesitter.install'.compilers = { 'cl' }
+
+
 require('nvim-treesitter.configs').setup{
-  ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'rust', 'cpp', 'python', 'haskell'},
+  ensure_installed = {'javascript', 'html', 'css', 'vim', 'lua', 'rust', 'c', 'cpp', 'python', 'haskell'},
   highlight = {
     enable = true,
   },
@@ -8,6 +12,7 @@ require('nvim-treesitter.configs').setup{
     enable = true,
   },
 }
+
 
 require('treesitter-context').setup{
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -22,4 +27,5 @@ require('treesitter-context').setup{
   separator = nil,
   zindex = 20, -- The Z-index of the context window
 }
+
 
