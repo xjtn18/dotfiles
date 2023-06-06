@@ -78,8 +78,8 @@ vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn')
 
 -- set indentation level for certain programming languages
 vim.cmd('autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2')
-vim.cmd('autocmd FileType rust,c,cpp,python           setlocal sw=3 ts=3')
-
+vim.cmd('autocmd FileType rust,c,cpp                  setlocal sw=3 ts=3')
+vim.cmd('autocmd FileType python                      setlocal sw=4 ts=4')
 
 
 
