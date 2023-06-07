@@ -2,7 +2,7 @@
 vim.cmd('command! DEV e ~/dev')
 vim.cmd('command! PLAY e ~/dev/playground')
 vim.cmd('command! WID e ~/dev/notes/personal/WID.org')
-vim.cmd('command! ALAC e ~/AppData/Roaming/alacritty/alacritty.yml')
+vim.cmd('command! ALAC e ~/dotfiles/alacritty.yml')
 
 -- Change into current open file's directory
 vim.cmd('command! CD lcd %:p:h')

@@ -46,7 +46,7 @@ vim.api.nvim_set_keymap('n', 'U', '<C-r>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>=', 'gg=G<C-o>zz', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<leader>il', ':e ~/AppData/Local/nvim/init.lua<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>il', ':e ~/dotfiles/nvim/init.lua<cr>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>pe', ':e ~/AppData/Local/nvim-data<cr>', { noremap = true })
 
