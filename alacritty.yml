@@ -174,7 +174,8 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 14.0
+  #size: 14.0
+  size: 12.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -188,7 +189,8 @@ font:
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
     x: 0
-    y: 0
+    #y: 0
+    y: 1
 
   # Use built-in font for box drawing characters.
   #
@@ -400,14 +402,14 @@ colors:
 
 #cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    #shape: Block
+    shape: Block
 
     # Cursor blinking state
     #
@@ -416,7 +418,7 @@ colors:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    #blinking: Off
+    blinking: on
 
   # Vi mode cursor style
   #
@@ -427,12 +429,12 @@ colors:
   #vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
-  #blink_interval: 750
+  blink_interval: 400
 
   # Time after which cursor stops blinking, in seconds.
   #
   # Specifying '0' will disable timeout for blinking.
-  #blink_timeout: 5
+  blink_timeout: 0
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
