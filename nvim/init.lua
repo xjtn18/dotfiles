@@ -24,8 +24,8 @@ vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/ta
 vim.cmd [[
 augroup LineColumnHL
 autocmd!
-autocmd WinEnter * set cursorcolumn cursorline
-autocmd WinLeave * set nocursorcolumn nocursorline
+"autocmd WinEnter * set cursorcolumn cursorline
+"autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 ]]
 
@@ -77,9 +77,9 @@ vim.cmd('autocmd FocusLost * :update')
 vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn')
 
 -- set indentation level for certain programming languages
-vim.cmd('autocmd FileType javascript,json,org,vim,lua setlocal sw=2 ts=2')
-vim.cmd('autocmd FileType rust,c,cpp                  setlocal sw=3 ts=3')
-vim.cmd('autocmd FileType python                      setlocal sw=4 ts=4')
+vim.cmd('autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json,org,vim,lua setlocal sw=2 ts=2')
+vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
+vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 
 
