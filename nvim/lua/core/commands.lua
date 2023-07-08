@@ -17,6 +17,9 @@ vim.cmd('command! PC PlugClean')
 -- Change into the (recent) project you've been working on
 vim.cmd('command! AP cd cvo_website')
 
+-- Kill all open buffers except the currently focused buffer
+vim.cmd("command! KA execute 'bufdo if bufnr(\"%\") != ' .. vim.fn.bufnr('#') .. ' | bd! | endif'")
+
 -- Return to dashboard
 vim.cmd('command! D Dashboard')
 
