@@ -6,7 +6,7 @@ require('core.plugin_config')
 
 -- Set the colorscheme
 --vim.cmd('colorscheme terafox')
-vim.cmd('colorscheme habamax')
+vim.cmd('colorscheme default')
 
 
 -- Makes it so that vim and system share the same clipboard
