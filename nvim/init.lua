@@ -5,7 +5,8 @@ require('core.plugin_config')
 
 
 -- Set the colorscheme
-vim.cmd('colorscheme terafox')
+--vim.cmd('colorscheme terafox')
+vim.cmd('colorscheme habamax')
 
 
 -- Makes it so that vim and system share the same clipboard
@@ -62,7 +63,7 @@ vim.opt.smartcase = true
 vim.opt.keywordprg = ':help'
 
 -- Tells vim to see underscores as words
-vim.opt.iskeyword:remove{'_'}
+--vim.opt.iskeyword:remove{'_'}
 
 -- Set the cdpath so that I can easily cd into directories at this location
 vim.opt.cdpath:append{
