@@ -13,26 +13,27 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = {
-  --'glepnir/dashboard-nvim',
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
-  'maxmellon/vim-jsx-pretty',
   'nvim-treesitter/nvim-treesitter',
-  --'nvim-treesitter/nvim-treesitter-context',
-  --'nvim-lualine/lualine.nvim',
   'nvim-tree/nvim-web-devicons',
-  --{
-    --'nvim-tree/nvim-tree.lua',
-    --lazy = false,
-  --},
   'cohama/lexima.vim',
-  --'neovimhaskell/haskell-vim',
-  --'neanias/everforest-nvim',
-  --'UnikMask/iroh-vim',
+  'herringtondarkholme/yats.vim',
+  'maxmellon/vim-jsx-pretty',
   {
     'xjtn18/nightfox.nvim',
     lazy = false,
   },
+  --{
+    --'nvim-tree/nvim-tree.lua',
+    --lazy = false,
+  --},
+  --'nvim-treesitter/nvim-treesitter-context',
+  --'nvim-lualine/lualine.nvim',
+  --'neovimhaskell/haskell-vim',
+  --'neanias/everforest-nvim',
+  --'UnikMask/iroh-vim',
+  --'glepnir/dashboard-nvim',
 }
 
 require("lazy").setup(plugins)

@@ -13,6 +13,7 @@ vim.cmd('colorscheme default')
 vim.api.nvim_set_option("clipboard","unnamed")
 
 
+vim.cmd('filetype on')
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
@@ -51,8 +52,8 @@ vim.opt.expandtab = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+--vim.opt.autoindent = true
+--vim.opt.smartindent = true
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -117,15 +118,15 @@ local function config_work()
 
   if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = ""
-    vim.g.neovide_cursor_animation_length = 0
+    vim.g.neovide_cursor_animation_length = 0.02
 
     vim.g.neovide_refresh_rate = 30
-    vim.g.neovide_refresh_rate_idle = 30
+    vim.g.neovide_refresh_rate_idle = 15
   end
 end
 
 
-config_home()
---config_work()
+--config_home()
+config_work()
 
 config_common()
