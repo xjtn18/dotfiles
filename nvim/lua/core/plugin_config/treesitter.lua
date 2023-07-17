@@ -1,27 +1,27 @@
 -- Treesitter config
 
-require 'nvim-treesitter.install'.compilers = { 'cl' }
+--require 'nvim-treesitter.install'.compilers = { 'cl' }
 
 
 require('nvim-treesitter.configs').setup{
+  sync_install = false,
   ensure_installed = {
     'javascript',
-    --'typescript',
     'html',
     'css',
     'vim',
     'lua',
-    'rust',
+    --'rust',
     'c',
     'cpp',
     'python',
-    'haskell'
+    --'haskell'
   },
   highlight = {
-    enable = false,
+    enable = true,
   },
   indent = {
-    enable = false,
+    enable = true,
   },
 }
 
