@@ -6,6 +6,8 @@
 require('nvim-treesitter.configs').setup{
   sync_install = false,
   ensure_installed = {
+    'json',
+    'jsonc',
     'javascript',
     'html',
     'css',
