@@ -30,7 +30,9 @@ vim.api.nvim_set_keymap('n', '<Leader>-', ':lua adjust_font_size(-1)<CR>', {nore
 -- Mappings
 vim.api.nvim_set_keymap('n', '<leader>s', ':lua source_config()<cr>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeFindFileToggle<cr>zz', { noremap = true })
+
+-- vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeFindFileToggle<cr>zz', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>e', [[<Cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>]], {noremap = true, silent = true})
 
 -- Telescope mappings
 vim.api.nvim_set_keymap('n', '<leader>f', ':Telescope find_files<cr>', { noremap = true })

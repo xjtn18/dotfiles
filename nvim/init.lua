@@ -26,8 +26,8 @@ vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/ta
 vim.cmd [[
 augroup LineColumnHL
 autocmd!
-"autocmd WinEnter * set cursorcolumn cursorline
-"autocmd WinLeave * set nocursorcolumn nocursorline
+autocmd WinEnter * set cursorcolumn cursorline
+autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 ]]
 
