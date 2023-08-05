@@ -73,3 +73,4 @@ vim.api.nvim_set_keymap('n', '<cr>', ':a<cr><cr>.<cr>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<bs>', 'dd', { noremap = true })
 
 
+
