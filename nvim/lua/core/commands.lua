@@ -23,3 +23,6 @@ vim.cmd('command! D Dashboard')
 -- highlight all occurences (without auto moving cursor to next occurence)
 vim.api.nvim_command('command! -nargs=1 MS :match Search /<args>/')
 
+-- Copy the relative path to the current file
+vim.api.nvim_command("command! CRP call setreg('+', expand('%'))")
+

@@ -23,6 +23,7 @@ vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/ta
 
 
 -- Specify behavior of line/column HL for windows
+--[[
 vim.cmd [[
 augroup LineColumnHL
 autocmd!
@@ -30,6 +31,7 @@ autocmd WinEnter * set cursorcolumn cursorline
 autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 ]]
+--]]
 
 -- Save folds information for my config files
 vim.cmd [[
