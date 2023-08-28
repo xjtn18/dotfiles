@@ -66,11 +66,17 @@ vim.api.nvim_set_keymap('n', 'L', 'Lzz', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>o', '<C-o>zz', { noremap = true })
 
+-- Comment out (JS) entire visual selection
 vim.api.nvim_set_keymap('v', '<leader>/', ':s#^#// <cr> :nohl<cr>', { noremap = true })
 
 -- Create/delete lines in normal mode
-vim.api.nvim_set_keymap('n', '<cr>', ':a<cr><cr>.<cr>k', { noremap = true })
+vim.api.nvim_set_keymap('v', '<cr>', ':a<cr><cr>.<cr>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<bs>', 'dd', { noremap = true })
 
+-- Yank a whole file
+vim.api.nvim_set_keymap('n', '<leader>yf', 'ggyG<C-o>zz', { noremap = true })
 
+
+-- Open LSP code actions in Telescope
+vim.api.nvim_set_keymap('n', '<leader>a', [[<cmd>lua vim.lsp.buf.code_action()<cr>]], { noremap = true, silent = true })
 
