@@ -23,7 +23,6 @@ vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/ta
 
 
 -- Specify behavior of line/column HL for windows
---[[
 vim.cmd [[
 augroup LineColumnHL
 autocmd!
@@ -31,7 +30,6 @@ autocmd WinEnter * set cursorcolumn cursorline
 autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 ]]
---]]
 
 -- Save folds information for my config files
 vim.cmd [[
@@ -88,7 +86,6 @@ vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 
 local function config_common()
-  vim.cmd("cd ~/dev")
   if vim.g.neovide then
     vim.g.neovide_hide_mouse_when_typing = true
   end
@@ -96,6 +93,7 @@ end
 
 
 local function config_home()
+  vim.cmd("cd ~/dev")
   --vim.opt.guifont = "Cousine NFM:h17"
   vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
   --vim.cmd('set linespace=-2') -- Reduce the space between lines
@@ -114,6 +112,7 @@ end
 
 
 local function config_work()
+  vim.cmd("cd ~/dev/projects/cvo_website")
   --vim.opt.guifont = "Cousine NFM:h13"
   vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
   --vim.cmd('set linespace=-1') -- Reduce the space between lines
