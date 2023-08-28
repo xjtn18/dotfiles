@@ -45,6 +45,7 @@ local plugins = {
     },
     lazy = false,
   },
+  'nvim-telescope/telescope-ui-select.nvim',
   --{
     --'nvim-tree/nvim-tree.lua',
     --lazy = false,
