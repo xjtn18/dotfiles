@@ -1,8 +1,7 @@
 !*
 .git/
 node_modules/
-mochawesome-report/
 *-lock.*
 **/build/static/
 **/build/assets/
-mochawesome-report
+**/mochawesome-report*/

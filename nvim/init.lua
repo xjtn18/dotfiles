@@ -50,6 +50,8 @@ vim.opt.shiftwidth = 3
 -- Convert tabs to spaces
 vim.opt.expandtab = true
 
+vim.o.signcolumn = 'yes'
+vim.opt.number = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 --vim.opt.autoindent = true
