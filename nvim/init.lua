@@ -18,9 +18,8 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
 
--- Run the tab-naming config file
+-- Set custom tab-naming behavior
 vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/tabline.vim')
-
 
 -- Specify behavior of line/column HL for windows
 vim.cmd [[
@@ -44,9 +43,6 @@ augroup END
 vim.opt.background = 'dark'
 vim.opt.foldcolumn = '0'
 
-vim.opt.tabstop = 3
-vim.opt.shiftwidth = 3
-
 -- Convert tabs to spaces
 vim.opt.expandtab = true
 
@@ -59,6 +55,9 @@ vim.opt.relativenumber = true
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 
 -- VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
 -- 'SHIFT-K' (I often do by accident).

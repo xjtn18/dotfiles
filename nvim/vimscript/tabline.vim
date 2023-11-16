@@ -88,5 +88,3 @@ endfunction
 
 
 set tabline=%!GetTabLine()
-
-
