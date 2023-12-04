@@ -85,30 +85,11 @@ vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 
-
-local function config_common()
-  if vim.g.neovide then
-    vim.g.neovide_hide_mouse_when_typing = true
-  end
-end
-
-
 local function config_home()
   vim.cmd("cd ~/dev")
   --vim.opt.guifont = "Cousine NFM:h17"
   vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
   --vim.cmd('set linespace=-2') -- Reduce the space between lines
-
-  if vim.g.neovide then
-    vim.g.neovide_cursor_vfx_mode = "pixiedust"
-
-    vim.g.neovide_cursor_vfx_particle_density = 10.0
-    vim.g.neovide_cursor_vfx_particle_lifetime = 3.0
-    vim.g.neovide_cursor_animation_length = 0.02
-
-    vim.g.neovide_refresh_rate = 120
-    vim.g.neovide_refresh_rate_idle = 60
-  end
 end
 
 
@@ -117,18 +98,12 @@ local function config_work()
   --vim.opt.guifont = "Cousine NFM:h13"
   vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
   --vim.cmd('set linespace=-1') -- Reduce the space between lines
-
-  if vim.g.neovide then
-    vim.g.neovide_cursor_vfx_mode = ""
-    vim.g.neovide_cursor_animation_length = 0.02
-
-    vim.g.neovide_refresh_rate = 30
-    vim.g.neovide_refresh_rate_idle = 15
-  end
 end
 
+local where = os.getenv("WHERE") -- Determine if this is my work computer or home computer
 
---config_home()
-config_work()
-
-config_common()
+if where == "home" then
+  config_home()
+elseif where == "work" then
+  config_work()
+end

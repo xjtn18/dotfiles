@@ -1,6 +1,6 @@
 -- Treesitter config
 
---require 'nvim-treesitter.install'.compilers = { 'cl' }
+require 'nvim-treesitter.install'.compilers = { 'zig' }
 
 
 require('nvim-treesitter.configs').setup{
