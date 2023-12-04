@@ -31,5 +31,11 @@ require('nightfox').setup{
       red     = Shade.new('#c2604c', '#eb746b', '#c54e45'),  -- 1: statements
       pink    = Shade.new('#cb7985', '#789B98', '#ad6771'),  -- 2: preproc
     }
+  },
+  groups = {
+    terafox = {
+      Visual = { fg = '#AFA489' } -- Override fg of visual selections (so comments are always legible)
+    }
   }
 }
+
