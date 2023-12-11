@@ -9,6 +9,8 @@ vim.opt.termguicolors = true
 -- Show dotfiles
 vim.g.nvim_tree_hide_dotfiles = 0
 
+vim.g.nvim_tree_respect_buf_cwd = 1
+
 -- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",

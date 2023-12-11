@@ -87,8 +87,8 @@ vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 local function config_home()
   vim.cmd("cd ~/dev")
-  --vim.opt.guifont = "Cousine NFM:h17"
-  vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
+  --vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
+  vim.opt.guifont = "Berkeley Mono Trial:h16"
   --vim.cmd('set linespace=-2') -- Reduce the space between lines
 end
 
