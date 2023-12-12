@@ -46,7 +46,7 @@ vim.opt.foldcolumn = '0'
 -- Convert tabs to spaces
 vim.opt.expandtab = true
 
-vim.o.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 vim.opt.number = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -88,7 +88,7 @@ vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 local function config_home()
   vim.cmd("cd ~/dev")
   --vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
-  vim.opt.guifont = "Berkeley Mono Trial:h16"
+  --vim.opt.guifont = "Berkeley Mono Trial:h16"
   --vim.cmd('set linespace=-2') -- Reduce the space between lines
 end
 
@@ -96,7 +96,7 @@ end
 local function config_work()
   vim.cmd("cd ~/dev/projects/cvo_website")
   --vim.opt.guifont = "Cousine NFM:h13"
-  vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
+  --vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
   --vim.cmd('set linespace=-1') -- Reduce the space between lines
 end
 
