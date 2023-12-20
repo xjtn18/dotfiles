@@ -46,16 +46,13 @@ local plugins = {
     lazy = false,
   },
   'nvim-telescope/telescope-ui-select.nvim',
-  --{
-    --'nvim-tree/nvim-tree.lua',
-    --lazy = false,
-  --},
-  --'nvim-treesitter/nvim-treesitter-context',
-  --'nvim-lualine/lualine.nvim',
-  --'neovimhaskell/haskell-vim',
-  --'neanias/everforest-nvim',
-  --'UnikMask/iroh-vim',
-  --'glepnir/dashboard-nvim',
+  {
+    'nvim-tree/nvim-tree.lua',
+    lazy = false,
+  },
+  'nvim-treesitter/nvim-treesitter-context',
+  'nvim-lualine/lualine.nvim',
+  'glepnir/dashboard-nvim',
 }
 
 require("lazy").setup(plugins)

@@ -137,7 +137,7 @@ require('lualine').setup {
   sections = process_sections {
     lualine_a = { 'mode' },
     lualine_b = {
-      'branch',
+      --'branch',
       --'diff', -- THIS ADDS THE DIFF SECTION OF THE STATUS LINE
       {
         'diagnostics',
@@ -178,7 +178,8 @@ require('lualine').setup {
       search_result,
       'filetype'
     },
-    lualine_z = { '%l:%c', '%p%%/%L' },
+    --lualine_z = { '%l:%c', '%p%%/%L' },
+    lualine_z = { '%l:%c' },
   },
   inactive_sections = {
     lualine_c = { '%f %y %m' },
