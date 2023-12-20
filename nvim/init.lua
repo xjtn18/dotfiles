@@ -19,14 +19,14 @@ vim.cmd('syntax on')
 
 
 -- Set custom tab-naming behavior
-vim.cmd('source ' .. vim.fn.expand('$HOME') .. '/AppData/Local/nvim/vimscript/tabline.vim')
+vim.cmd('source ' .. vim.fn.stdpath('config') .. '/vimscript/tabline.vim')
 
 -- Specify behavior of line/column HL for windows
 vim.cmd [[
 augroup LineColumnHL
 autocmd!
-autocmd WinEnter * set cursorcolumn cursorline
-autocmd WinLeave * set nocursorcolumn nocursorline
+"autocmd WinEnter * set cursorcolumn cursorline
+"autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 ]]
 
@@ -127,8 +127,16 @@ local function config_work()
   end
 end
 
+local function config_backend()
+  vim.cmd("cd ~/dev/projects/CVO-Infinity_Backend")
+  --vim.opt.guifont = "Cousine NFM:h13"
+  --vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
+  --vim.cmd('set linespace=-1') -- Reduce the space between lines
+end
+
 
 --config_home()
-config_work()
+--config_work()
+config_backend()
 
 config_common()
