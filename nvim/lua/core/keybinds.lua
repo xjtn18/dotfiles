@@ -9,13 +9,6 @@ function source_config()
   vim.api.nvim_command('silent! doautocmd FileType')
 end
 
--- Function for quickly zooming in/out
-function adjust_font_size(amt)
-  local size = tonumber(string.match(vim.o.guifont, "h(%d+)")) + amt
-  vim.cmd('set guifont=BlexMono\\ Nerd\\ Font\\ Mono:h' .. size)
-end
-
-
 
 -- MAPPINGS
 
@@ -23,9 +16,6 @@ end
 for i = 1, 9 do
   vim.api.nvim_set_keymap('n', '<leader>' .. i, ':tabn ' .. i .. '<CR>', { noremap = true, silent = true })
 end
-
-vim.api.nvim_set_keymap('n', '<Leader>+', ':lua adjust_font_size(1)<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>-', ':lua adjust_font_size(-1)<CR>', {noremap = true, silent = true})
 
 -- Mappings
 vim.api.nvim_set_keymap('n', '<leader>s', ':lua source_config()<cr>', { noremap = true, silent = true })

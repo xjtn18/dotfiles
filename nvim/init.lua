@@ -25,8 +25,8 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. '/vimscript/tabline.vim')
 vim.cmd [[
 augroup LineColumnHL
 autocmd!
-"autocmd WinEnter * set cursorcolumn cursorline
-"autocmd WinLeave * set nocursorcolumn nocursorline
+autocmd WinEnter * set cursorcolumn cursorline
+autocmd WinLeave * set nocursorcolumn nocursorline
 augroup END
 ]]
 
