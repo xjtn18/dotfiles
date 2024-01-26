@@ -40,7 +40,7 @@ augroup END
 ]]
 
 vim.g.lexima_enable_newline_rules = 1
-vim.g.lexima_enable_basic_rules = 0
+vim.g.lexima_enable_basic_rules = 1
 
 -- Other settings
 vim.opt.background = 'dark'
