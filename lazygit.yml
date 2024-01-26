@@ -1,0 +1,4 @@
+git:
+  autoFetch: false
+refresher:
+  refreshInterval: 3

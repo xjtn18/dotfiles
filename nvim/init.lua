@@ -88,6 +88,9 @@ vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 
+-- Auto open WID
+vim.cmd("WID")
+
 local function config_home()
   vim.cmd("cd ~/dev")
   --vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
