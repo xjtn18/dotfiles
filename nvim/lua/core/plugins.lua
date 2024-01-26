@@ -41,7 +41,13 @@ local plugins = {
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},     -- Required
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
+      {
+        'L3MON4D3/LuaSnip',     -- Required
+        dependencies = {
+          'saadparwaiz1/cmp_luasnip',
+          'rafamadriz/friendly-snippets',
+        },
+      },
     },
     lazy = false,
   },
@@ -50,9 +56,9 @@ local plugins = {
     'nvim-tree/nvim-tree.lua',
     lazy = false,
   },
-  --'nvim-treesitter/nvim-treesitter-context',
+  'nvim-treesitter/nvim-treesitter-context',
   'nvim-lualine/lualine.nvim',
-  --'glepnir/dashboard-nvim',
+  'glepnir/dashboard-nvim',
 }
 
 require("lazy").setup(plugins)
