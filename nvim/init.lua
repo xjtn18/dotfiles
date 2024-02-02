@@ -40,7 +40,7 @@ augroup END
 ]]
 
 vim.g.lexima_enable_newline_rules = 1
-vim.g.lexima_enable_basic_rules = 0
+vim.g.lexima_enable_basic_rules = 1
 
 -- Other settings
 vim.opt.background = 'dark'
@@ -88,6 +88,8 @@ vim.cmd('autocmd FileType javascript,javascriptreact,typescript,typescriptreact,
 vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
+-- Auto open WID
+vim.cmd("WID")
 
 local function config_home()
   vim.cmd("cd ~/dev")
