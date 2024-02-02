@@ -17,7 +17,8 @@ require('nvim-treesitter.configs').setup{
     'c',
     'cpp',
     'python',
-    --'haskell'
+    --'haskell',
+    'bash',
   },
   highlight = {
     enable = true,

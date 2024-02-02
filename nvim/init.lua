@@ -55,6 +55,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 --vim.opt.autoindent = true
 --vim.opt.smartindent = true
+vim.opt.formatoptions:remove({'c', 'r', 'o'})
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
