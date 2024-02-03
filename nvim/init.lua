@@ -3,6 +3,22 @@ require('core.commands')
 require('core.plugins')
 require('core.plugin_config')
 
+require('osc52').setup {
+
+    max_length = 0,           -- Maximum length of selection (0 for no limit)
+
+    silent = false,           -- Disable message on successful copy
+
+    trim = false,             -- Trim surrounding whitespaces before copy
+
+    tmux_passthrough = false, -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
+}
+
+vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+
+vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
 
 -- Set the colorscheme
 vim.cmd('colorscheme terafox')
@@ -87,9 +103,6 @@ vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn')
 vim.cmd('autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json,org,vim,lua setlocal sw=2 ts=2')
 vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
-
--- Auto open WID
-vim.cmd("WID")
 
 local function config_home()
   vim.cmd("cd ~/dev")

@@ -58,7 +58,8 @@ local plugins = {
   },
   'nvim-treesitter/nvim-treesitter-context',
   'nvim-lualine/lualine.nvim',
-  'glepnir/dashboard-nvim',
+  --'glepnir/dashboard-nvim',
+  'ojroques/nvim-osc52',
 }
 
 require("lazy").setup(plugins)
