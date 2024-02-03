@@ -86,7 +86,7 @@ window:
   startup_mode: Windowed
 
   # Window title
-  title: Vim
+  title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: false
@@ -461,10 +461,10 @@ colors:
 shell:
   program: cmd
 
-  # instantly boot neovim
-  args:
-    - /K
-    - nvim
+  # CUSTOM :: instantly boot neovim at startup
+  #args:
+  # - /K
+  # - nvim
 
 # Startup directory
 #
