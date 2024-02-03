@@ -3,27 +3,12 @@ require('core.commands')
 require('core.plugins')
 require('core.plugin_config')
 
-require('osc52').setup {
-
-    max_length = 0,           -- Maximum length of selection (0 for no limit)
-
-    silent = false,           -- Disable message on successful copy
-
-    trim = false,             -- Trim surrounding whitespaces before copy
-
-    tmux_passthrough = false, -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
-}
-
-vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
-
-vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
-
-vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+-- Platform-dependent constants
+--local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
+--local home = (opsys == 'win') and os.getenv('USERPROFILE') or '~'
 
 -- Set the colorscheme
 vim.cmd('colorscheme terafox')
---vim.cmd('colorscheme default')
-
 
 -- Makes it so that vim and system share the same clipboard
 vim.api.nvim_set_option("clipboard","unnamed")
@@ -89,8 +74,8 @@ vim.opt.keywordprg = ':help'
 
 -- Set the cdpath so that I can easily cd into directories at this location
 vim.opt.cdpath:append{
-  vim.fn.expand('$HOME') .. '/dev/projects',
-  vim.fn.expand('$HOME') .. '/dev/intellimind',
+  '~/dev/projects',
+  '~/dev/intellimind',
 }
 
 -- Auto save buffers on focus lost
@@ -105,7 +90,7 @@ vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 local function config_home()
-  vim.cmd("cd ~/dev")
+  vim.cmd('cd ~/dev')
   --vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
   --vim.opt.guifont = "Berkeley Mono Trial:h16"
   --vim.cmd('set linespace=-2') -- Reduce the space between lines
@@ -113,18 +98,17 @@ end
 
 
 local function config_work()
-  vim.cmd("cd ~/dev/projects/cvo_website")
+  vim.cmd('cd ~/dev/projects/cvo_website')
   --vim.opt.guifont = "Cousine NFM:h13"
   --vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
   --vim.cmd('set linespace=-1') -- Reduce the space between lines
 end
 
 local function config_linux_ec2()
-  vim.cmd("cd ~/dev/projects/CVO-Infinity_Backend")
+  vim.cmd('cd ~/dev')
 end
 
-
-local where = os.getenv("WHERE") -- Determine if this is my work computer or home computer
+local where = os.getenv("WHERE") -- Determine where im at (custom env var that I need to define).
 
 if where == "home" then
   config_home()

@@ -19,6 +19,24 @@ local handlers = {
       ]]
     }
   end,
+  ["lua_ls"] = function ()
+    lspconfig.lua_ls.setup {
+      settings = {
+        Lua = {
+          runtime = {
+            version = 'LuaJIT',
+          },
+          -- This gets rid of the annoying warnings about 'vim' and 'require'.
+          diagnostics = {
+            globals = {
+              'vim',
+              'require',
+            }
+          }
+        }
+      }
+    }
+  end,
 }
 
 mason_lspconfig.setup({

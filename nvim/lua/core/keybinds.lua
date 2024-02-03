@@ -37,7 +37,7 @@ vim.api.nvim_set_keymap('n', 'U', '<C-r>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>=', 'gg=G<C-o>zz', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<leader>il', ':e ~/dotfiles/nvim/init.lua<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>il', ':e ~/dev/dotfiles/nvim/init.lua<cr>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>pe', ':e ~/AppData/Local/nvim-data<cr>', { noremap = true })
 
@@ -68,7 +68,3 @@ vim.api.nvim_set_keymap('n', '<leader>yf', 'ggyG<C-o>zz', { noremap = true })
 
 -- Open LSP code actions in Telescope
 vim.api.nvim_set_keymap('n', '<leader>a', [[<cmd>lua vim.lsp.buf.code_action()<cr>]], { noremap = true, silent = true })
-
---vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
---vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
---vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)

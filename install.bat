@@ -17,4 +17,3 @@ mklink /H %USERPROFILE%\AppData\Roaming\lazygit\config.yml "%DOTFILES_DIR%\lazyg
 mklink /J %USERPROFILE%\AppData\Local\nvim "%DOTFILES_DIR%\nvim"
 
 echo Finished ~ dotfiles are now synced.
-
