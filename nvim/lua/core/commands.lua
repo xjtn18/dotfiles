@@ -2,10 +2,10 @@
 vim.cmd('command! DEV e ~/dev')
 vim.cmd('command! PLAY e ~/dev/playground')
 vim.cmd('command! WID e ~/dev/notes/personal/WID.org')
-vim.cmd('command! ALAC e ~/dotfiles/alacritty.yml')
+vim.cmd('command! ALAC e ~/dev/dotfiles/alacritty.yml')
 vim.cmd('command! AP cd cvo_website')
 vim.cmd('command! LAMB cd intellimind/Lambdas')
-vim.cmd('command! PC e ~/dotfiles/nvim/lua/core/plugin_config/init.lua')
+vim.cmd('command! PC e ~/dev/dotfiles/nvim/lua/core/plugin_config/init.lua')
 vim.cmd('command! BRC e ~/.bashrc')
 
 -- Change into current open file's directory
