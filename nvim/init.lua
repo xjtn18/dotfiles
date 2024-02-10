@@ -52,11 +52,9 @@ vim.opt.expandtab = true
 
 vim.opt.signcolumn = 'yes'
 vim.opt.number = true
-vim.opt.number = true
 vim.opt.relativenumber = true
 --vim.opt.autoindent = true
 --vim.opt.smartindent = true
-vim.opt.formatoptions:remove({'c', 'r', 'o'})
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -80,6 +78,9 @@ vim.opt.cdpath:append{
 
 -- Auto save buffers on focus lost
 vim.cmd('autocmd FocusLost * :update')
+
+-- Disable auto-comment
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- Disable line/column HL in Telescope prompt
 vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn')
