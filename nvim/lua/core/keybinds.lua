@@ -1,7 +1,7 @@
 -- Set the leader key
 vim.g.mapleader = " "
 
-function source_config()
+function Source_config()
   -- Source init.vim and lua/config.lua (this file)
   vim.api.nvim_command('luafile ' .. vim.fn.stdpath('config') .. '/init.lua')
 
@@ -18,7 +18,7 @@ for i = 1, 9 do
 end
 
 -- Mappings
-vim.api.nvim_set_keymap('n', '<leader>s', ':lua source_config()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>s', ':lua Source_config()<cr>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFileToggle<cr>zz', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>e', [[<Cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>]], {noremap = true, silent = true})
