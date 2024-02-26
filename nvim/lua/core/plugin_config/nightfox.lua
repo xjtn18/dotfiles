@@ -4,18 +4,18 @@ local Shade = require("nightfox.lib.shade")
 
 
 
-local my_orange = '#e88635'
+local my_orange = '#A38974' or '#e88635'
 local my_yellow = '#E7AC4E'
 local my_white = '#d6caab';
-local my_red = '#c2604c';
-local my_quiet = '#634C47'
+local my_red = '#c97160';
+local my_quiet = '#56423e'
 local my_gray = '#AFA489'
 local my_blue = '#789B98';
 local my_green = '#808A4A';
 local my_dark_teal = '#899470';
 local my_light_teal = '#9eb185';
 local my_water = '#3B5754';
-local my_bg = '#1c1a1a' or'#2e2b2a';
+local my_bg = '#262423' or '#1c1a1a';
 local my_light = '#2C2726' or '#3B3534';
 
 
