@@ -13,6 +13,7 @@ require("core.plugin_config.osc52")
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.filetype_extend('typescriptreact', {'jsdoc'})
 luasnip.config.setup {}
 
 cmp.setup {
