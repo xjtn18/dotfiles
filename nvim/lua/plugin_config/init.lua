@@ -1,12 +1,11 @@
-require("core.plugin_config.nightfox")
-require("core.plugin_config.treesitter")
-require("core.plugin_config.telescope")
-require("core.plugin_config.mason")
-require("core.plugin_config.lsp")
-require("core.plugin_config.nvim-tree")
-require("core.plugin_config.osc52")
---require("core.plugin_config.lualine")
---require("core.plugin_config.dashboard")
+require("plugin_config.nightfox")
+require("plugin_config.treesitter")
+require("plugin_config.telescope")
+require("plugin_config.mason")
+require("plugin_config.lsp")
+require("plugin_config.osc52")
+--require("plugin_config.lualine")
+--require("plugin_config.dashboard")
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`

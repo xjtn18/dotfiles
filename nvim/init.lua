@@ -1,7 +1,7 @@
-require('core.keybinds')
-require('core.commands')
-require('core.plugins')
-require('core.plugin_config')
+require('keybinds')
+require('commands')
+require('plugins')
+require('plugin_config')
 
 -- Platform-dependent constants
 --local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
@@ -20,7 +20,7 @@ vim.cmd('syntax on')
 
 
 -- Set custom tab-naming behavior
-vim.cmd('source ' .. vim.fn.stdpath('config') .. '/vimscript/tabline.vim')
+vim.cmd('source ' .. vim.fn.stdpath('config') .. '/tabline.vim')
 
 -- Specify behavior of line/column HL for windows
 vim.cmd [[
