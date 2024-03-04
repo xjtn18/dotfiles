@@ -2,3 +2,10 @@ git:
   autoFetch: false
 refresher:
   refreshInterval: 3
+customCommands:
+  - key: "<c-p>"
+    context: "global"
+    command: "git pull origin dev"
+    description: "Pull from 'dev'"
+    loadingText: "Pulling from dev..."
+    stream: true
