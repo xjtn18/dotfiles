@@ -62,6 +62,8 @@ vim.opt.smartcase = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
+vim.opt.mouse = 'a'
+
 -- VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
 -- 'SHIFT-K' (I often do by accident).
 -- .. issue explained here -> https://github.com/neovim/neovim/issues/21169
