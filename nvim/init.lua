@@ -7,17 +7,16 @@ require('plugin_config')
 --local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
 --local home = (opsys == 'win') and os.getenv('USERPROFILE') or '~'
 
--- Set the colorscheme
-vim.cmd('colorscheme terafox')
-
 -- Makes it so that vim and system share the same clipboard
 vim.api.nvim_set_option("clipboard","unnamed")
-
 
 vim.cmd('filetype on')
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
+-- Set the colorscheme
+--vim.cmd('colorscheme terafox')
+vim.cmd('colorscheme github_dark')
 
 -- Set custom tab-naming behavior
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/tabline.vim')
@@ -44,7 +43,6 @@ vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_basic_rules = 1
 
 -- Other settings
-vim.opt.background = 'dark'
 vim.opt.foldcolumn = '0'
 
 -- Convert tabs to spaces

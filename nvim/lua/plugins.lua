@@ -56,6 +56,10 @@ local plugins = {
   --'nvim-lualine/lualine.nvim',
   --'glepnir/dashboard-nvim',
   'ojroques/nvim-osc52',
+  {
+    'projekt0n/github-nvim-theme',
+    lazy = false,
+  },
 }
 
 require("lazy").setup(plugins)
