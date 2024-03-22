@@ -1,0 +1,60 @@
+[colors.cursor]
+cursor = "#D87E34"
+text = "CellBackground"
+
+[colors.vi_mode_cursor]
+cursor = "#D87E34"
+text = "CellBackground"
+
+[cursor]
+blink_interval = 400
+blink_timeout = 0
+
+[cursor.style]
+blinking = "on"
+shape = "Block"
+
+[font]
+size = 12
+
+[font.glyph_offset]
+x = 0
+y = 1
+
+[font.normal]
+family = "BerkeleyMonoTrial Nerd Font"
+
+[[keyboard.bindings]]
+chars = "\u001B[13;2u"
+key = "Return"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[8;2u"
+key = "Back"
+mods = "Shift"
+
+[mouse]
+hide_when_typing = true
+
+[shell]
+args = ["/K", 'cd %USERPROFILE%\dev']
+program = "cmd"
+
+[window]
+decorations = "none"
+dynamic_title = false
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.dimensions]
+columns = 120
+lines = 50
+
+[window.padding]
+x = 4
+y = 4
+
+[window.position]
+x = 50
+y = 50

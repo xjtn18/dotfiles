@@ -2,7 +2,7 @@
 vim.cmd('command! DEV e ~/dev')
 vim.cmd('command! PLAY e ~/dev/playground')
 vim.cmd('command! WID e ~/dev/notes/personal/WID.org')
-vim.cmd('command! ALAC e ~/dev/dotfiles/alacritty.yml')
+vim.cmd('command! ALAC e ~/dev/dotfiles/alacritty.toml')
 vim.cmd('command! PC e ~/dev/dotfiles/nvim/plugin_config/init.lua')
 vim.cmd('command! BRC e ~/.bashrc')
 
