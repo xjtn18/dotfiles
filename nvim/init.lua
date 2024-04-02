@@ -16,7 +16,7 @@ vim.cmd('syntax on')
 
 -- Set the colorscheme
 --vim.cmd('colorscheme terafox')
-vim.cmd('colorscheme github_dark')
+vim.cmd('colorscheme habamax')
 
 -- Set custom tab-naming behavior
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/tabline.vim')
