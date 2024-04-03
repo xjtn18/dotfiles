@@ -9,7 +9,6 @@ function Source_config()
   vim.api.nvim_command('silent! doautocmd FileType')
 end
 
-
 -- MAPPINGS
 
 -- Create the mappings for tabs where leader + number 'n' takes you the 'nth' tab.
@@ -19,7 +18,8 @@ end
 
 -- Mappings
 vim.api.nvim_set_keymap('n', '<leader>s', ':lua Source_config()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>e', [[<Cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>e', [[<Cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>]],
+  { noremap = true, silent = true })
 
 -- Telescope mappings
 vim.api.nvim_set_keymap('n', '<leader>f', ':Telescope find_files<cr>', { noremap = true })
@@ -36,6 +36,8 @@ vim.api.nvim_set_keymap('n', 'U', '<C-r>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>=', 'gg=G<C-o>zz', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>il', ':e ~/dev/dotfiles/nvim/init.lua<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ip', ':e ~/dev/dotfiles/nvim/lua/plugins.lua<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ic', ':e ~/dev/dotfiles/nvim/lua/plugin_config<cr>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>pe', ':e ~/AppData/Local/nvim-data<cr>', { noremap = true })
 
@@ -65,7 +67,7 @@ function DeleteNextLine()
   local current_line = vim.api.nvim_win_get_cursor(0)[1]
   local current_col = vim.api.nvim_win_get_cursor(0)[2]
   vim.api.nvim_buf_set_lines(0, current_line, current_line + 1, false, {})
-  vim.api.nvim_win_set_cursor(0, {current_line, current_col})
+  vim.api.nvim_win_set_cursor(0, { current_line, current_col })
 end
 
 vim.api.nvim_set_keymap('n', '<bs>', 'dd', { noremap = true })
@@ -80,19 +82,19 @@ vim.api.nvim_set_keymap('n', '<leader>n', ':lua ToggleNetrw()<CR>', { noremap = 
 
 -- Function to toggle Netrw
 function ToggleNetrw()
-    -- Check if the current buffer's filetype is 'netrw'
-    if vim.bo.filetype == 'netrw' then
-        -- Try to return to the previous buffer stored in a global variable
-        if vim.g.last_netrw_buf and vim.fn.bufexists(vim.g.last_netrw_buf) == 1 then
-            vim.cmd('buffer ' .. vim.g.last_netrw_buf)
-        else
-            -- If the previous buffer does not exist, just close Netrw
-            vim.cmd('bd')
-        end
+  -- Check if the current buffer's filetype is 'netrw'
+  if vim.bo.filetype == 'netrw' then
+    -- Try to return to the previous buffer stored in a global variable
+    if vim.g.last_netrw_buf and vim.fn.bufexists(vim.g.last_netrw_buf) == 1 then
+      vim.cmd('buffer ' .. vim.g.last_netrw_buf)
     else
-        -- Save the current buffer number to a global variable
-        vim.g.last_netrw_buf = vim.fn.bufnr()
-        -- Open Netrw
-        vim.cmd('Ex')
+      -- If the previous buffer does not exist, just close Netrw
+      vim.cmd('bd')
     end
+  else
+    -- Save the current buffer number to a global variable
+    vim.g.last_netrw_buf = vim.fn.bufnr()
+    -- Open Netrw
+    vim.cmd('Ex')
+  end
 end
