@@ -35,3 +35,18 @@ end
 
 -- Map the function to a custom command
 vim.api.nvim_command('command! KE lua Kill_other_buffers()')
+
+function Kill_attached_lsp_clients()
+  local clients = vim.lsp.get_active_clients()
+
+  local clientIds = {}
+  for _, client in ipairs(clients) do
+    table.insert(clientIds, client.id)
+  end
+
+  -- Stopping all clients by passing the array of client IDs
+  vim.lsp.stop_client(clientIds, true) -- true for forceful stop
+end
+
+-- Kill every f*cking LSP right now, once and for all
+vim.api.nvim_command('command! KL lua Kill_attached_lsp_clients()')
