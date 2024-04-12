@@ -8,7 +8,7 @@ require('plugin_config')
 --local home = (opsys == 'win') and os.getenv('USERPROFILE') or '~'
 
 -- Makes it so that vim and system share the same clipboard
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.cmd('filetype on')
 vim.cmd('filetype plugin indent on')
@@ -57,9 +57,6 @@ vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-
 vim.opt.mouse = 'a'
 
 -- VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
@@ -71,7 +68,7 @@ vim.opt.keywordprg = ':help'
 --vim.opt.iskeyword:remove{'_'}
 
 -- Set the cdpath so that I can easily cd into directories at this location
-vim.opt.cdpath:append{
+vim.opt.cdpath:append {
   '~/dev/projects',
   '~/dev/intellimind',
 }
@@ -87,7 +84,7 @@ vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn')
 
 -- set indentation level for certain programming languages
 vim.cmd('autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json,org,vim,lua setlocal sw=2 ts=2')
-vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
+vim.cmd('autocmd FileType c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
 local function config_home()

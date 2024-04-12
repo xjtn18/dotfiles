@@ -3,7 +3,7 @@
 require 'nvim-treesitter.install'.compilers = { 'zig', 'gcc' }
 
 
-require('nvim-treesitter.configs').setup{
+require('nvim-treesitter.configs').setup {
   sync_install = false,
   ensure_installed = {
     'json',
@@ -13,7 +13,7 @@ require('nvim-treesitter.configs').setup{
     'css',
     'vim',
     'lua',
-    --'rust',
+    'rust',
     'c',
     'cpp',
     'python',
@@ -44,4 +44,5 @@ require('treesitter-context').setup{
   separator = nil,
   zindex = 20, -- The Z-index of the context window
 }
-]]--
+]]
+   --
