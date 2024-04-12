@@ -6,6 +6,22 @@ customCommands:
   - key: "<c-p>"
     context: "global"
     command: "git pull origin dev"
-    description: "Pull from 'dev'"
-    loadingText: "Pulling from dev..."
+    description: "Pull from origin/dev"
+    loadingText: "Pulling from origin/dev..."
     stream: true
+  - key: "<c-f>"
+    context: "global"
+    command: "git fetch --prune"
+    description: "Fetch and prune"
+    loadingText: "Fetching and pruning..."
+    stream: true
+  - key: "<c-u>"
+    context: "global"
+    command: "cmd /c git fetch && git reset --hard @{u}"
+    description: "Match upstream"
+    loadingText: "Matching upstream..."
+    stream: true
+    prompts:
+        - type: 'confirm'
+          title: 'Match upstream'
+          body: 'WARNING: Are you sure you want to match upstream? This will delete all local changes, committed or not.'
