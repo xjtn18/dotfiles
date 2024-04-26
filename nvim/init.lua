@@ -1,9 +1,10 @@
+local where = os.getenv("WHERE") -- Determine where im at (custom env var that I need to define).
+
 require('keybinds')
 require('commands')
 require('plugins')
 require('plugin_config')
-
-local where = os.getenv("WHERE") -- Determine where im at (custom env var that I need to define).
+require('keep_session')
 
 -- Platform-dependent constants
 --local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
@@ -40,45 +41,6 @@ autocmd BufWinLeave *.vim,*.lua mkview
 autocmd BufWinEnter *.vim,*.lua silent! loadview
 augroup END
 ]]
-
--- Autocommand that saves the session upon exiting Neovim
-vim.api.nvim_create_autocmd("VimLeave", {
-  pattern = "*",
-  callback = function()
-    -- Specify the path where you want to save the session
-    local session_file_path = vim.fn.stdpath('data') .. '/session.vim'
-    vim.cmd('mksession! ' .. session_file_path)
-  end
-})
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  callback = function()
-    local session_file_path = vim.fn.stdpath('data') .. '/session.vim'
-    if vim.fn.argc() == 0 and vim.fn.filereadable(session_file_path) == 1 then
-      vim.cmd('source ' .. session_file_path)
-
-      -- Delay execution to allow session to fully load
-      vim.defer_fn(function()
-        local current_buf = vim.api.nvim_get_current_buf()
-
-        -- Refresh all buffers
-        vim.cmd('silent! bufdo e')
-
-        -- Return to the original buffer
-        vim.cmd('buffer ' .. current_buf)
-
-        -- Set start dir (needs to happen here otherwise it will get overwritten)
-        local start_dir =
-            (where == "work") and '~/dev/projects/cvo_website'
-            or '~/dev'
-
-        vim.cmd('cd ' .. start_dir)
-      end, 100) -- Delay time in milliseconds, adjust if necessary
-    end
-  end
-
-})
 
 vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_basic_rules = 1
