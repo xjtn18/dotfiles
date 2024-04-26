@@ -3,6 +3,8 @@ require('commands')
 require('plugins')
 require('plugin_config')
 
+local where = os.getenv("WHERE") -- Determine where im at (custom env var that I need to define).
+
 -- Platform-dependent constants
 --local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
 --local home = (opsys == 'win') and os.getenv('USERPROFILE') or '~'
@@ -61,18 +63,22 @@ vim.api.nvim_create_autocmd("VimEnter", {
         local current_buf = vim.api.nvim_get_current_buf()
 
         -- Refresh all buffers
-        vim.cmd('bufdo e')
+        vim.cmd('silent! bufdo e')
 
         -- Return to the original buffer
         vim.cmd('buffer ' .. current_buf)
-      end, 0)  -- Delay time in milliseconds, adjust if necessary
+
+        -- Set start dir (needs to happen here otherwise it will get overwritten)
+        local start_dir =
+            (where == "work") and '~/dev/projects/cvo_website'
+            or '~/dev'
+
+        vim.cmd('cd ' .. start_dir)
+      end, 100) -- Delay time in milliseconds, adjust if necessary
     end
   end
+
 })
-
-
--- Remove 'options' from sessionoptions
-vim.opt.sessionoptions:remove("options")
 
 vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_basic_rules = 1
@@ -122,15 +128,11 @@ vim.cmd('autocmd FileType javascript,javascriptreact,typescript,typescriptreact,
 vim.cmd('autocmd FileType c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
-local where = os.getenv("WHERE") -- Determine where im at (custom env var that I need to define).
-
 if where == "home" then
-  vim.cmd('cd ~/dev')
+  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h16" -- FOR NON-CLI ONLY
 elseif where == "work" then
   vim.cmd('cd ~/dev/projects/cvo_website')
+  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11" -- FOR NON-CLI ONLY
 else
   -- Assume then that we are running on the work linux EC2 instance
-  vim.cmd('cd ~/dev')
 end
-
-vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11" -- FOR NON-CLI ONLY
