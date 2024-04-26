@@ -8,7 +8,7 @@ require('plugin_config')
 --local home = (opsys == 'win') and os.getenv('USERPROFILE') or '~'
 
 -- Makes it so that vim and system share the same clipboard
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.cmd('filetype on')
 vim.cmd('filetype plugin indent on')
@@ -38,6 +38,41 @@ autocmd BufWinLeave *.vim,*.lua mkview
 autocmd BufWinEnter *.vim,*.lua silent! loadview
 augroup END
 ]]
+
+-- Autocommand that saves the session upon exiting Neovim
+vim.api.nvim_create_autocmd("VimLeave", {
+  pattern = "*",
+  callback = function()
+    -- Specify the path where you want to save the session
+    local session_file_path = vim.fn.stdpath('data') .. '/session.vim'
+    vim.cmd('mksession! ' .. session_file_path)
+  end
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  callback = function()
+    local session_file_path = vim.fn.stdpath('data') .. '/session.vim'
+    if vim.fn.argc() == 0 and vim.fn.filereadable(session_file_path) == 1 then
+      vim.cmd('source ' .. session_file_path)
+
+      -- Delay execution to allow session to fully load
+      vim.defer_fn(function()
+        local current_buf = vim.api.nvim_get_current_buf()
+
+        -- Refresh all buffers
+        vim.cmd('bufdo e')
+
+        -- Return to the original buffer
+        vim.cmd('buffer ' .. current_buf)
+      end, 0)  -- Delay time in milliseconds, adjust if necessary
+    end
+  end
+})
+
+
+-- Remove 'options' from sessionoptions
+vim.opt.sessionoptions:remove("options")
 
 vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_basic_rules = 1
@@ -71,7 +106,7 @@ vim.opt.keywordprg = ':help'
 --vim.opt.iskeyword:remove{'_'}
 
 -- Set the cdpath so that I can easily cd into directories at this location
-vim.opt.cdpath:append{
+vim.opt.cdpath:append {
   '~/dev/projects',
   '~/dev/intellimind',
 }
@@ -90,31 +125,15 @@ vim.cmd('autocmd FileType javascript,javascriptreact,typescript,typescriptreact,
 vim.cmd('autocmd FileType rust,c,cpp setlocal sw=3 ts=3')
 vim.cmd('autocmd FileType python setlocal sw=4 ts=4')
 
-local function config_home()
-  vim.cmd('cd ~/dev')
-  --vim.opt.guifont = "BlexMono Nerd Font Mono:h16"
-  --vim.opt.guifont = "Berkeley Mono Trial:h16"
-  --vim.cmd('set linespace=-2') -- Reduce the space between lines
-end
-
-
-local function config_work()
-  vim.cmd('cd ~/dev/projects/cvo_website')
-  --vim.opt.guifont = "Cousine NFM:h13"
-  --vim.opt.guifont = "BlexMono Nerd Font Mono:h13"
-  --vim.cmd('set linespace=-1') -- Reduce the space between lines
-end
-
-local function config_linux_ec2()
-  vim.cmd('cd ~/dev')
-end
-
 local where = os.getenv("WHERE") -- Determine where im at (custom env var that I need to define).
 
 if where == "home" then
-  config_home()
+  vim.cmd('cd ~/dev')
 elseif where == "work" then
-  config_work()
+  vim.cmd('cd ~/dev/projects/cvo_website')
 else
-  config_linux_ec2()
+  -- Assume then that we are running on the work linux EC2 instance
+  vim.cmd('cd ~/dev')
 end
+
+vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11" -- FOR NON-CLI ONLY

@@ -98,3 +98,21 @@ function ToggleNetrw()
     vim.cmd('Ex')
   end
 end
+
+function AdjustFontSize(delta)
+  local guifont = table.concat(vim.opt.guifont, ", ")
+  local font_name, font_size = string.match(guifont, "^(.*):h(%d+)$")
+  if font_name and font_size then
+    font_size = tonumber(font_size) + delta
+    if font_size < 8 then font_size = 8 end -- Set a minimum font size if needed
+    vim.opt.guifont = string.format("%s:h%d", font_name, font_size)
+  end
+end
+
+-- Zoom behavior for GUI nvim
+vim.api.nvim_set_keymap('n', '<C-ScrollWheelUp>', '<cmd>lua AdjustFontSize(1)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-ScrollWheelDown>', '<cmd>lua AdjustFontSize(-1)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-ScrollWheelUp>', '<Esc><cmd>lua AdjustFontSize(1)<CR>a',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-ScrollWheelDown>', '<Esc><cmd>lua AdjustFontSize(-1)<CR>a',
+  { noremap = true, silent = true })
