@@ -6,11 +6,11 @@ local mason_lspconfig = require("mason-lspconfig")
 
 
 local handlers = {
-  function (server_name) -- default handler (optional)
+  function(server_name) -- default handler (optional)
     require("lspconfig")[server_name].setup {}
   end,
   -- Next, you can provide targeted overrides for specific servers.
-  ["tsserver"] = function ()
+  ["tsserver"] = function()
     lspconfig.tsserver.setup {
       --[[
       flags = {
@@ -19,7 +19,7 @@ local handlers = {
       ]]
     }
   end,
-  ["lua_ls"] = function ()
+  ["lua_ls"] = function()
     lspconfig.lua_ls.setup {
       settings = {
         Lua = {
@@ -47,6 +47,8 @@ mason_lspconfig.setup({
     "eslint",
     "pyright",
     "jsonls",
+    "jsonls",
+    "rust_analyzer",
   },
 })
 
