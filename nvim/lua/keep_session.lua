@@ -32,8 +32,24 @@ vim.api.nvim_create_autocmd("VimEnter", {
       -- Delay execution to allow session to fully load
       vim.defer_fn(function()
         local original_buf = vim.api.nvim_get_current_buf()
-        vim.cmd('silent! bufdo doautocmd BufRead')
-        vim.cmd('silent! ' .. original_buf .. 'bufdo doautocmd BufRead')
+        -- Iterate over all buffers and apply BufRead autocommands except for netrw
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
+          local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+          if buftype ~= 'nofile' and filetype ~= 'netrw' then
+            vim.api.nvim_buf_call(buf, function()
+              vim.cmd('silent! doautocmd BufRead')
+            end)
+          end
+        end
+
+        -- Run BufRead autocommands for the original buffer, checking its filetype
+        local original_filetype = vim.api.nvim_buf_get_option(original_buf, 'filetype')
+        if original_filetype ~= 'netrw' then
+          vim.api.nvim_buf_call(original_buf, function()
+            vim.cmd('silent! doautocmd BufRead')
+          end)
+        end
       end, 0) -- Delay time in milliseconds, adjust if necessary
     end
   end

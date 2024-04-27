@@ -3,18 +3,34 @@ git:
 refresher:
   refreshInterval: 3
 customCommands:
+  - key: "<c-n>"
+    context: "global"
+    command: "nvl"
+    description: "Start local Neovim server"
+    stream: true
+    subprocess: true
+
+  - key: "<c-k>"
+    context: "global"
+    command: "knv"
+    description: "Kill local Neovim server"
+    stream: true
+    subprocess: true
+
   - key: "<c-p>"
     context: "global"
     command: "git pull origin dev"
     description: "Pull from origin/dev"
     loadingText: "Pulling from origin/dev..."
     stream: true
+
   - key: "<c-f>"
     context: "global"
     command: "git fetch --prune"
     description: "Fetch and prune"
     loadingText: "Fetching and pruning..."
     stream: true
+
   - key: "<c-u>"
     context: "global"
     command: "cmd /c git fetch && git reset --hard @{u}"
