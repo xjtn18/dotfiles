@@ -3,8 +3,9 @@
 node_modules/
 .aws-sam/
 *-lock.*
-**/build/static/
-**/build/assets/
-**/mochawesome-report*/
-**/.DS_Store
+build/static/
+build/assets/
+mochawesome-report*/
+.DS_Store
 target/
+dist/

@@ -72,12 +72,9 @@ vim.opt.keywordprg = ':help'
 
 -- Set the cdpath so that I can easily cd into directories at this location
 vim.opt.cdpath:append {
-    '~/dev/projects',
-    '~/dev/intellimind',
+  '~/dev/projects',
+  '~/dev/intellimind',
 }
-
--- Auto save buffers on focus lost
-vim.cmd('autocmd FocusLost * :update')
 
 -- Disable auto-comment
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
@@ -85,25 +82,19 @@ vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 -- Disable line/column HL in Telescope prompt
 vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline nocursorcolumn')
 
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+
 -- set indentation level for certain programming languages
 vim.cmd(
-    'autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json,vim,lua setlocal shiftwidth=2 tabstop=2')
+  'autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json,vim,lua setlocal shiftwidth=2 tabstop=2')
 vim.cmd('autocmd FileType c,cpp setlocal shiftwidth=3 tabstop=3')
 
--- Auto-commands
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
-    pattern = "*",
-    callback = function()
-        vim.o.tabstop = 4
-        vim.o.shiftwidth = 4
-    end,
-})
-
 if where == "home" then
-    vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h16" -- FOR NON-CLI ONLY
+  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h16" -- FOR NON-CLI ONLY
 elseif where == "work" then
-    vim.cmd('cd ~/dev/projects/cvo_website')
-    vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11" -- FOR NON-CLI ONLY
+  vim.cmd('cd ~/dev/projects/cvo_website')
+  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11" -- FOR NON-CLI ONLY
 else
-    -- Assume then that we are running on the work linux EC2 instance
+  -- Assume then that we are running on the work linux EC2 instance
 end

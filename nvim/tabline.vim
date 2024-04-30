@@ -4,7 +4,7 @@ function! GetTabLine()
   for i in range(len(tabs))
     let line .= (i+1 == tabpagenr()) ? '%#TabLineSel#' : '%#TabLine#'
     let line .= '%' . (i + 1) . 'T'
-    let line .= ' ' . tabs[i].uniq_name . ' '
+    let line .= ' ' . (i+1) . '. ' . tabs[i].uniq_name . ' |'
   endfor
   let line .= '%#TabLineFill#%T'
   return line
