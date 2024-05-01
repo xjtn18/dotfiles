@@ -1,3 +1,8 @@
+-- If this env var is present when running neovim, it will not add any of the following autocmd's.
+if vim.env.NO_TRACK_SESSION then
+  return
+end
+
 -- Autocommand that saves the session upon exiting Neovim
 vim.api.nvim_create_autocmd("VimLeave", {
   pattern = "*",
