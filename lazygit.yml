@@ -10,6 +10,11 @@ customCommands:
     stream: true
     subprocess: true
 
+  - key: "y"
+    context: "localBranches"
+    command: "cmd /c myecho -n {{ .SelectedLocalBranch.Name }} | clip"
+    description: "Yank branch name"
+
   - key: "<c-k>"
     context: "global"
     command: "knv"
