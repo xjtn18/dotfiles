@@ -9,14 +9,12 @@ git pull
 # Remove any existing version of these files
 rm -f "$HOME/.tmux.conf"
 rm -f "$HOME/.rgignore"
-rm -f "$HOME/.config/alacritty/alacritty.toml"
 rm -f "$HOME/.config/lazygit/config.yml"
 rm -rf "$HOME/.config/nvim"
 
 # Create symbolic links (soft links) for the files
 ln -s "${DOTFILES_DIR}/.tmux.conf" "$HOME/.tmux.conf"
 ln -s "${DOTFILES_DIR}/.rgignore" "$HOME/.rgignore"
-ln -s "${DOTFILES_DIR}/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 ln -s "${DOTFILES_DIR}/lazygit.yml" "$HOME/.config/lazygit/config.yml"
 ln -s "${DOTFILES_DIR}/nvim" "$HOME/.config/nvim"
 
