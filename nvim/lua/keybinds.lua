@@ -116,3 +116,30 @@ vim.api.nvim_set_keymap('i', '<C-ScrollWheelUp>', '<Esc><cmd>lua AdjustFontSize(
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-ScrollWheelDown>', '<Esc><cmd>lua AdjustFontSize(-1)<CR>a',
   { noremap = true, silent = true })
+
+
+-- Unison sync command
+vim.api.nvim_set_keymap('n', '<F5>', '', {
+  noremap = true,
+  callback = function()
+    local handle
+    handle = vim.loop.spawn('unison', {
+      detached = true
+    }, function(code)
+      handle:close()
+
+      if code == 0 then
+        vim.schedule(function()
+          vim.notify('Unison sync complete', vim.log.levels.INFO)
+        end)
+      end
+
+      if code ~= 0 then
+        vim.schedule(function()
+          vim.notify('Unison failed with code ' .. code, vim.log.levels.ERROR)
+        end)
+      end
+    end)
+  end,
+  silent = true
+})
