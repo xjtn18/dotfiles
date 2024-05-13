@@ -47,7 +47,6 @@ mason_lspconfig.setup({
     "eslint",
     "pyright",
     "jsonls",
-    "jsonls",
     "rust_analyzer",
   },
 })

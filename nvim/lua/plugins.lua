@@ -52,7 +52,7 @@ local plugins = {
     lazy = false,
   },
   'nvim-telescope/telescope-ui-select.nvim',
-  'nvim-treesitter/nvim-treesitter-context',
+  --'nvim-treesitter/nvim-treesitter-context',
   --'nvim-lualine/lualine.nvim',
   --'glepnir/dashboard-nvim',
   'ojroques/nvim-osc52',
@@ -64,7 +64,7 @@ local plugins = {
     'stevearc/conform.nvim',
     lazy = false,
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_after_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
@@ -82,6 +82,7 @@ local plugins = {
         json = { 'prettierd' },
         jsonc = { 'prettierd' },
         html = { 'prettierd' },
+        python = { 'black' },
       }
     },
   }
