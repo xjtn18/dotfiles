@@ -82,7 +82,7 @@ local plugins = {
         json = { 'prettierd' },
         jsonc = { 'prettierd' },
         html = { 'prettierd' },
-        python = { 'black' },
+        python = { 'isort', 'black' },
       }
     },
   }
