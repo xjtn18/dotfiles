@@ -18,8 +18,8 @@ vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
 
 -- Set the colorscheme
---vim.cmd('colorscheme terafox')
-vim.cmd('colorscheme habamax')
+--vim.cmd('colorscheme habamax')
+vim.cmd('colorscheme duskfox')
 
 -- Set custom tab-naming behavior
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/tabline.vim')
@@ -61,6 +61,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.mouse = 'a'
+
+vim.o.wildignorecase = true
 
 -- VERY IMPORTANT - stops extremely annoying 30 second freeze when executing
 -- 'SHIFT-K' (I often do by accident).
