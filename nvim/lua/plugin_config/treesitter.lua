@@ -18,6 +18,7 @@ require('nvim-treesitter.configs').setup {
     'cpp',
     'python',
     --'haskell',
+    'markdown',
     'bash',
     'yaml',
   },
@@ -45,4 +46,4 @@ require('treesitter-context').setup{
   zindex = 20, -- The Z-index of the context window
 }
 ]]
-   --
+--
