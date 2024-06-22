@@ -5,6 +5,7 @@ require('commands')
 require('plugins')
 require('plugin_config')
 require('keep_session')
+require('run_file')
 
 -- Platform-dependent constants
 --local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
