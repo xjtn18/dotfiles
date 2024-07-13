@@ -37,6 +37,20 @@ local handlers = {
       }
     }
   end,
+  ["pyright"] = function()
+    lspconfig.pyright.setup {
+      settings = {
+        python = {
+          analysis = {
+            extraPaths = {
+              "/home/ec2-user/dev/projects/Layers/aws_helpers/python/lib/python3.11/site-packages",
+              "/home/ec2-user/dev/projects/Layers/database_utils_layer/python/lib/python3.11/site-packages"
+            },
+          },
+        },
+      },
+    }
+  end,
 }
 
 mason_lspconfig.setup({

@@ -12,7 +12,8 @@ customCommands:
 
   - key: "y"
     context: "localBranches"
-    command: "cmd /c myecho -n {{ .SelectedLocalBranch.Name }} | clip"
+    #command: "cmd /c myecho -n {{ .SelectedLocalBranch.Name }} | clip"   # WINDOWS
+    command: "sh -c 'echo -n {{ .SelectedLocalBranch.Name }} | xclip -selection clipboard >/dev/null 2>&1 &'"
     description: "Yank branch name"
 
   - key: "<c-k>"

@@ -143,3 +143,14 @@ vim.api.nvim_set_keymap('n', '<F5>', '', {
   end,
   silent = true
 })
+
+-- Function to insert "// no-push" above the current line
+function InsertNoPush()
+  -- Get the current line number
+  local current_line = vim.fn.line('.')
+  -- Insert "// no-push" above the current line
+  vim.fn.append(current_line - 1, "// no-push")
+end
+
+-- Create a keybinding in normal mode
+vim.api.nvim_set_keymap('n', '<leader>8', ':lua InsertNoPush()<CR>', { noremap = true, silent = true })

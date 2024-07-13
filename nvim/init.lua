@@ -12,7 +12,7 @@ require('run_file')
 --local home = (opsys == 'win') and os.getenv('USERPROFILE') or '~'
 
 -- Makes it so that vim and system share the same clipboard
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 vim.cmd('filetype on')
 vim.cmd('filetype plugin indent on')
