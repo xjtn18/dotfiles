@@ -46,6 +46,25 @@ augroup END
 vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_basic_rules = 1
 
+local function paste()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(""),
+  }
+end
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = paste,
+    ["*"] = paste,
+  },
+}
+
 -- Other settings
 vim.opt.foldcolumn = '0'
 
