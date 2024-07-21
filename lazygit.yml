@@ -12,9 +12,15 @@ customCommands:
 
   - key: "y"
     context: "localBranches"
-    #command: "cmd /c myecho -n {{ .SelectedLocalBranch.Name }} | clip"   # WINDOWS
-    command: "sh -c 'echo -n {{ .SelectedLocalBranch.Name }} | xclip -selection clipboard >/dev/null 2>&1 &'"
+    command: "echo {{ .SelectedLocalBranch.Name }} | yank"
     description: "Yank branch name"
+    subprocess: true
+
+  - key: "i"
+    context: "commits"
+    command: "echo {{ .SelectedLocalCommit.Name }} | yank"
+    description: "Yank commit message"
+    subprocess: true
 
   - key: "<c-k>"
     context: "global"

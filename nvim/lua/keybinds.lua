@@ -144,13 +144,17 @@ vim.api.nvim_set_keymap('n', '<F5>', '', {
   silent = true
 })
 
--- Function to insert "// no-push" above the current line
+-- Function to insert "// @no-push" above the current line
 function InsertNoPush()
   -- Get the current line number
   local current_line = vim.fn.line('.')
-  -- Insert "// no-push" above the current line
-  vim.fn.append(current_line - 1, "// no-push")
+  -- Get the indentation of the current line
+  local current_indent = vim.fn.indent(current_line)
+  -- Create the comment with the correct indentation
+  local comment = string.rep(' ', current_indent) .. "// @nopush"
+  -- Insert the comment above the current line
+  vim.fn.append(current_line - 1, comment)
 end
 
 -- Create a keybinding in normal mode
-vim.api.nvim_set_keymap('n', '<leader>8', ':lua InsertNoPush()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>-', ':lua InsertNoPush()<CR>', { noremap = true, silent = true })
