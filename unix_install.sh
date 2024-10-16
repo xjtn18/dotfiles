@@ -19,4 +19,6 @@ ln -sf "${DOTFILES_DIR}/lazygit.yml" "$HOME/.config/lazygit/config.yml"
 rm -rf "$HOME/.config/nvim"
 ln -s "${DOTFILES_DIR}/nvim" "$HOME/.config/nvim"
 
+ln -s "${DOTFILES_DIR}/.inputrc" "$HOME/.inputrc"
+
 echo "Dotfiles are now synced."
