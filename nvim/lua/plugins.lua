@@ -85,7 +85,12 @@ local plugins = {
         python = { 'isort', 'black' },
       }
     },
-  }
+  },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "zaldih/themery.nvim",
+    lazy = false,
+  },
 }
 
 require("lazy").setup(plugins)

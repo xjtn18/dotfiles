@@ -10,8 +10,8 @@ local handlers = {
     require("lspconfig")[server_name].setup {}
   end,
   -- Next, you can provide targeted overrides for specific servers.
-  ["tsserver"] = function()
-    lspconfig.tsserver.setup {
+  ["ts_ls"] = function()
+    lspconfig.ts_ls.setup {
       --[[
       flags = {
         debounce_text_changes = 5000
@@ -57,7 +57,7 @@ mason_lspconfig.setup({
   handlers = handlers,
   ensure_installed = {
     "lua_ls",
-    "tsserver",
+    "ts_ls",
     "eslint",
     "pyright",
     "jsonls",
