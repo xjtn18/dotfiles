@@ -26,8 +26,8 @@ for i = 1, 9 do
 end
 
 BindNormal('<leader>s', ':w<cr>')
-BindNormal('<leader>q', ':q<cr>')
-BindNormal('<leader>!', ':q!<cr>')
+BindNormal('<leader>q', ':bd<cr>')
+BindNormal('<leader>!', ':bd!<cr>')
 BindNormal('<leader>xx', ':wq<cr>')
 BindNormal('<leader>xa', ':wqa<cr>')
 BindNormal('<leader>v', ':lua Source_config()<cr>', { silent = true })

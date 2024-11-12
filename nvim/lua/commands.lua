@@ -53,3 +53,6 @@ end
 
 -- Kill every f*cking LSP right now, once and for all
 vim.api.nvim_command('command! KL lua Kill_attached_lsp_clients()')
+
+--
+vim.api.nvim_command('command! GD :belowright split | terminal env GIT_PAGER= gd %')
