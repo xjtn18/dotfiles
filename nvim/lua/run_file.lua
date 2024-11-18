@@ -11,7 +11,7 @@ function _G.run_file()
   elseif filetype == "javascript" then
     command = "node " .. filename
   elseif filetype == "typescript" then
-    command = "ts-node " .. filename
+    command = "ts-node-esm " .. filename
   else
     print("No run command defined for file type: " .. filetype)
     return
