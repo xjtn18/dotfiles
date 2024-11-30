@@ -6,6 +6,7 @@ require('plugins')
 require('plugin_config')
 require('keep_session')
 require('run_file')
+--require('custom_search_functionality')
 
 -- Platform-dependent constants
 --local opsys = (package.config:sub(1,1) == '\\') and 'win' or 'unix'
@@ -20,19 +21,13 @@ vim.cmd('syntax on')
 
 -- Set the colorscheme
 --vim.cmd('colorscheme habamax')
-vim.cmd('colorscheme duskfox')
+vim.cmd('colorscheme catppuccin-frappe')
 
 -- Set custom tab-naming behavior
 vim.cmd('source ' .. vim.fn.stdpath('config') .. '/tabline.vim')
 
--- Specify behavior of line/column HL for windows
-vim.cmd [[
-augroup LineColumnHL
-autocmd!
-autocmd WinEnter * set cursorcolumn cursorline
-autocmd WinLeave * set nocursorcolumn nocursorline
-augroup END
-]]
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 
 -- Save folds information for my config files
 vim.cmd [[
@@ -66,6 +61,8 @@ if vim.env.SSH_CONNECTION then
     },
   }
 end
+
+-- Configure override of the "/" search functionality to refrain from Neovims default behavior of jumping to the first match.
 
 -- Other settings
 vim.opt.foldcolumn = '0'
@@ -115,10 +112,10 @@ vim.cmd(
 vim.cmd('autocmd FileType c,cpp setlocal shiftwidth=3 tabstop=3')
 
 if where == "home" then
-  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h16" -- FOR NON-CLI ONLY
+  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h16"
 elseif where == "work" then
   vim.cmd('cd ~/dev/projects/cvo_website')
-  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11" -- FOR NON-CLI ONLY
+  vim.opt.guifont = "BerkeleyMonoTrial Nerd Font:h11"
 else
   -- Assume then that we are running on the work linux EC2 instance
 end

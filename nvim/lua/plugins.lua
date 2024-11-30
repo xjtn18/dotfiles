@@ -52,7 +52,7 @@ local plugins = {
     lazy = false,
   },
   'nvim-telescope/telescope-ui-select.nvim',
-  --'nvim-treesitter/nvim-treesitter-context',
+  'nvim-treesitter/nvim-treesitter-context',
   --'nvim-lualine/lualine.nvim',
   --'glepnir/dashboard-nvim',
   'ojroques/nvim-osc52',
@@ -86,7 +86,7 @@ local plugins = {
       }
     },
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000, opts = { no_italic = true } },
   {
     "zaldih/themery.nvim",
     lazy = false,
