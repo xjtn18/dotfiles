@@ -25,6 +25,10 @@ path_append() {
 }
 
 path_append "$HOME/dev/scripts"
+path_append "$HOME/dev/tools/nvim/bin"
+
+# Exports
+export AWS_PROFILE="jacob"
 
 
 # Aliases
